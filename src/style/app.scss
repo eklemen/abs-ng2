@@ -1,0 +1,11 @@
+// styles in src/style directory are applied to the whole page
+// styles in src/style directory are applied to the whole page
+body {
+    margin: 0;
+    header{
+        z-index: 2;
+    }
+}
+a {
+    color: #03A9F4;
+}

@@ -1,0 +1,28 @@
+// component styles are encapsulated and only applied to their components
+.home {
+    margin: 0;
+    height: 100vh;
+    color: white;
+    background-image: url('/img/bg.jpeg');
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .banner{
+        h1{
+            font-size: 5em;
+        }
+        .btn{
+            width: 200px;
+            padding: 10px 50px;
+            font-size: 2em;
+            background-color: transparent;
+            border: solid 1px white;
+            transition: all .3s ease;
+            &:hover{
+                background-color: rgba(60,60,60,0.5);
+            }
+        }
+    }
+    
+}
