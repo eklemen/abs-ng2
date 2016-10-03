@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
-import { Albums, RootObject } from './albums';
+import { RootObject, Album } from './albums';
 import { ROOT } from '../mock-imgur';
 
 @Injectable()
@@ -9,10 +9,24 @@ export class ApiService {
   // title = 'Angular 2';
   private cid : string = 'f83e63dbf0b9425';
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
+  private body : RootObject;
 
   getAlbums (): Observable<RootObject> {
-    return this.http.get(`${this.baseUrl}/albums`, {headers: this.getHeaders()})
-                    .map<RootObject>(this.extractData)
+    return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
+                    .map(this.extractData) // Get the albums array
+                    .map( (albums) => {
+                      let result: Array<Album> = [];
+                      debugger;
+                      if (albums) {
+                        albums.forEach((album) => {
+                          result.push(
+                            new Album (album.id,
+                              album.description,
+                              album.title));
+                        });
+                      }
+                      return result;
+                    })
                     .catch<RootObject>(this.handleError)
   }
 
@@ -26,31 +40,17 @@ export class ApiService {
   }
 
   private extractData(res: Response) {
-    let body = res.json();
-    console.log('res.data', body)
-    return body.data || {};
+    this.body = res.json();
+    console.log('res.data', this.body.data)
+    return this.body.data || {};
   }
 
-  private getHeaders(){
+  private headers(){
     let headers = new Headers();
     headers.append('Authorization', 'Client-ID f83e63dbf0b9425');
-    // headers.append('Content-Type', 'application/json');
+    headers.append('Content-Type', 'application/json');
     return headers;
   }
   constructor(private http: Http){ }
-
-  // getListings() {
-  //   return this.jsonp.request(`${this.publicUrl}/shops/SherrysBeachArt/listings/active.js?callback=JSONP_CALLBACK&${this.key}&includes=MainImage`, {method: 'Get'})
-  //     .map(res => res.json());
-  // }
-
-  // getSingleItem(listingId){
-  //   return this.jsonp.request(`${this.privateUrl}/listings/${listingId}.js?callback=JSONP_CALLBACK&${this.key}&includes=MainImage`, {method: 'Get'})
-  //     .map(res => res.json());
-  // }
-  // logError(err) {
-  //   console.error('There was an error: ' + err);
-  // }
-  
 
 }
