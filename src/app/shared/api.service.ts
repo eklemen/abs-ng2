@@ -10,20 +10,31 @@ export class ApiService {
   private cid : string = 'f83e63dbf0b9425';
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
   private body : any;
-  public albums : any[] = [];
+  private albums : any[] = [];
+  public albumList : any[] = [];
+  public album : any = {};
 
 
   getAlbums (): Observable<RootObject> {
     return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
         .map(res => res.json().data) // Get the albums array
         .flatMap( albums => {
-          debugger;
           return this.albums = albums;
         })
-        // .flatMap(album => {
-        //   return this.http.get(`${this.baseUrl}/album/${album.id}/images`, {headers: this.headers()})
-        //       .map(images => images.json().data);
-        // })
+        .flatMap((album, index )=> {
+          let albumDetails = new Album(index, album.description, album.title, []);
+          this.albumList.push(albumDetails);
+          // this.album[index].description = album.description;
+          return this.http.get(`${this.baseUrl}/album/${album.id}/images`, {headers: this.headers()})
+              .flatMap((images, index) => {
+                // let imagesToAdd = images.json().data
+                return images.json().data.map(image => {
+                  console.log('this.albums', this.albums);
+                  return image;
+                  debugger;
+                })
+              });
+        })
         .catch<RootObject>(this.handleError)
   }
 

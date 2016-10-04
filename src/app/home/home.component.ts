@@ -24,9 +24,8 @@ export class HomeComponent implements OnInit {
                        (ablums: any) => {
                         console.log(ablums);
                         return this.albums = ablums
-                      })
-                      //  error =>  this.errorMessage = <any>error);
-                      //  ubscribe(listings => {console.log(listings); return this.listings = listings.results}); 
+                      },
+                     error =>  this.errorMessage = <any>error);
   }
 
   ngOnInit() {
