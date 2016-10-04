@@ -1,4 +1,4 @@
-export interface Album {
+export class Album {
 	id: string;
 	title: string;
 	description: string;
@@ -19,16 +19,16 @@ export interface Album {
 	in_gallery: boolean;
 	is_ad: boolean;
 	order: number;
-    constructor(id: string, 
-                description: string,
-                title: string) {
-      this.id = id;
-      this.description = description;
-      this.title = title;
-    }
+	constructor(id: string,
+				description: string,
+				title: string) {
+		this.id = id;
+		this.description = description;
+		this.title = title;
+	}
 }
 
-export interface RootObject {
+export class RootObject {
 	data: any;
 	success: boolean;
 	status: number;

@@ -2,32 +2,29 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { RootObject, Album } from './albums';
-import { ROOT } from '../mock-imgur';
+// import { ROOT } from '../mock-imgur';
 
 @Injectable()
 export class ApiService {
   // title = 'Angular 2';
   private cid : string = 'f83e63dbf0b9425';
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
-  private body : RootObject;
+  private body : any;
+  public albums : any[] = [];
+
 
   getAlbums (): Observable<RootObject> {
     return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
-                    .map(this.extractData) // Get the albums array
-                    .map( (albums) => {
-                      let result: Array<Album> = [];
-                      debugger;
-                      if (albums) {
-                        albums.forEach((album) => {
-                          result.push(
-                            new Album (album.id,
-                              album.description,
-                              album.title));
-                        });
-                      }
-                      return result;
-                    })
-                    .catch<RootObject>(this.handleError)
+        .map(res => res.json().data) // Get the albums array
+        .flatMap( albums => {
+          debugger;
+          return this.albums = albums;
+        })
+        // .flatMap(album => {
+        //   return this.http.get(`${this.baseUrl}/album/${album.id}/images`, {headers: this.headers()})
+        //       .map(images => images.json().data);
+        // })
+        .catch<RootObject>(this.handleError)
   }
 
   private handleError (error: any) {

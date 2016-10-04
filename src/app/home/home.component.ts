@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
-import { Albums, RootObject } from '../shared/albums';
+import { Album, RootObject } from '../shared/albums';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  public albums : Albums[];
+  public albums : Album[];
   public response : RootObject;
   errorMessage: string;
   mode = 'Observable';

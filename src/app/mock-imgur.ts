@@ -1,5 +1,5 @@
 import { RootObject } from './shared/albums';
-export const ROOT: RootObject = {
+export const IMGURALBUMS: RootObject = {
   "data": [
     {
       "id": "dwEMU",
