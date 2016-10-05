@@ -18,11 +18,11 @@ export class HomeComponent implements OnInit {
     // Do stuff
   }
 
-  getHeroes() {
+  getAlbums() {
     this.apiService.getAlbums()
                      .subscribe(
                        (ablums: any) => {
-                        console.log(ablums);
+                        console.log('all albums from home', ablums);
                         return this.albums = ablums
                       },
                      error =>  this.errorMessage = <any>error);
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     console.log('Hello Home');
-    this.getHeroes();
+    this.getAlbums();
   }
 
 }
