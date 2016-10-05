@@ -1,3 +1,13 @@
 <p>
   Gallery Works!
 </p>
+
+<div *ngFor="let album of albums">
+  <h2>{{album.title}}</h2>
+  <p>{{album.description}}</p>
+  <div *ngFor="let image of album.img">
+    <img [src]="image.link" alt="">
+    <h5>{{image.title}}</h5>
+    <p>{{image.description}}</p>
+  </div>
+</div>

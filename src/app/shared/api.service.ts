@@ -6,13 +6,9 @@ import { RootObject, Album } from './albums';
 
 @Injectable()
 export class ApiService {
-  // title = 'Angular 2';
-  private cid : string = 'f83e63dbf0b9425';
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
   private body : any;
-  private albums : any[] = [];
   public albumList : any[] = [];
-
 
   getAlbums (): Observable<RootObject> {
     return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
@@ -25,7 +21,7 @@ export class ApiService {
           let albumDetails = new Album(index, album.description, album.title, []);
           this.albumList.push(albumDetails);
           return this.http.get(`${this.baseUrl}/album/${album.id}/images`, {headers: this.headers()})
-              .flatMap((images, index) => {
+              .flatMap((images) => {
                 return images.json().data.map(image => {
                   albumDetails.img.push(image);
                   console.log('new Album', albumDetails);
@@ -46,11 +42,11 @@ export class ApiService {
     return Observable.throw(errMsg);
   }
 
-  private extractData(res: Response) {
-    this.body = res.json();
-    console.log('res.data', this.body.data)
-    return this.body.data || {};
-  }
+  // private extractData(res: Response) {
+  //   this.body = res.json();
+  //   console.log('res.data', this.body.data)
+  //   return this.body.data || {};
+  // }
 
   private headers(){
     let headers = new Headers();
