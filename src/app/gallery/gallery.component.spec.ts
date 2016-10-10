@@ -4,7 +4,7 @@ import { GalleryComponent } from './gallery.component';
 import { ApiService } from '../shared';
 import { HttpModule } from "@angular/http";
 
-describe('About Component', () => {
+describe('Gallery Component', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
@@ -13,7 +13,7 @@ describe('About Component', () => {
         });
     });
 
-  it('should ...', () => {
+  it('should test an observable', () => {
     const fixture = TestBed.createComponent(GalleryComponent);
     fixture.detectChanges();
       expect(true).toEqual(true);
