@@ -5,19 +5,20 @@ import { ApiService } from '../shared';
 import { HttpModule } from "@angular/http";
 
 describe('Gallery Component', () => {
+let fixture, comp;
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [HttpModule],
             declarations: [GalleryComponent],
             providers: [ApiService]
         });
+        fixture = TestBed.createComponent(GalleryComponent);
+        comp = fixture.componentInstance;
     });
 
   it('should test an observable', () => {
-    const fixture = TestBed.createComponent(GalleryComponent);
     fixture.detectChanges();
       expect(true).toEqual(true);
-    // expect(fixture.nativeElement.children[0].textContent).toContain('gallery Works!');
   });
 
 });
