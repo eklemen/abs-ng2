@@ -2,12 +2,14 @@
   Gallery Works!
 </p>
 
-<div *ngFor="let album of albums">
-  <h2>{{album.title}}</h2>
-  <p>{{album.description}}</p>
-  <div *ngFor="let image of album.img">
-    <img [src]="image.link" alt="">
-    <h5>{{image.title}}</h5>
-    <p>{{image.description}}</p>
-  </div>
-</div>
+<pre>{{albums | json}}</pre>
+<!--<div *ngFor="let album of albums">-->
+  <!--<h2>{{album.title}}</h2>-->
+  <!--<p>{{album.description}}</p>-->
+  <!--&lt;!&ndash;<img [src]="album.cover" alt="album.title">&ndash;&gt;-->
+  <!--&lt;!&ndash;<div *ngFor="let image of album.img">&ndash;&gt;-->
+    <!--&lt;!&ndash;<img [src]="image.link" alt="">&ndash;&gt;-->
+    <!--&lt;!&ndash;<h5>{{image.title}}</h5>&ndash;&gt;-->
+    <!--&lt;!&ndash;<p>{{image.description}}</p>&ndash;&gt;-->
+  <!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--</div>-->
