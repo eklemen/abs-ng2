@@ -18,28 +18,20 @@ export class ApiService {
           return albums;
         })
         .flatMap((album, index )=> {
-          let albumDetails = new Album(index, album.description, album.title, null);
+          let albumDetails = new Album(album.id, album.description, album.title, null);
           this.albumList.push(albumDetails);
-          debugger;
           return this.http.get(`${this.baseUrl}/image/${album.cover}`, {headers: this.headers()})
-              .flatMap((image) => {
+              .map((image) => {
                 let coverImage = image.json().data.link;
                 albumDetails.cover = coverImage;
-                console.log('this.albumList', this.albumList);
-                console.log('albumDetails', albumDetails);
-                debugger;
                 return this.albumList;
               });
-              // .flatMap((images) => {
-              //   return images.json().data.map(image => {
-              //     albumDetails.img.push(image);
-              //     console.log('new Album', albumDetails);
-              //     console.log('this.albumList', this.albumList);
-              //     return this.albumList;
-              //   })
-              // });
         })
         .catch<RootObject>(this.handleError)
+  }
+
+  getSingleAlbum (albumId: any): any {
+      return 'Yep it works';
   }
 
   private handleError (error: any) {
@@ -50,12 +42,6 @@ export class ApiService {
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
-
-  // private extractData(res: Response) {
-  //   this.body = res.json();
-  //   console.log('res.data', this.body.data)
-  //   return this.body.data || {};
-  // }
 
   private headers(){
     let headers = new Headers();

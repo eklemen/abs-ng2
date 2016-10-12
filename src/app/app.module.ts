@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
+import { AlbumComponent } from './album/album.component';
 import { ApiService } from './shared';
 import { routing } from './app.routing';
 
@@ -23,7 +24,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AppComponent,
     HomeComponent,
     GalleryComponent,
-    AboutComponent
+    AboutComponent,
+    AlbumComponent
   ],
   providers: [
     ApiService
