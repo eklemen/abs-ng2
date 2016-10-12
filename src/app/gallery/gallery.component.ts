@@ -37,14 +37,7 @@ export class GalleryComponent implements OnInit {
   getSingleAlbum(albumId): void {
     console.log('passed in value', albumId);
     console.log('this.selectedAlbum.id', this.selectedAlbum.id);
-    this.router.navigate(['album/', albumId])
-    // this.apiService.getSingleAlbum(albumId)
-    //     .subscribe(
-    //         (ablum: any) => {
-    //           console.log('simgle album from albumComponent', ablum);
-    //           return this.album = ablum;
-    //         },
-    //         error =>  this.errorMessage = <any>error);
+    this.router.navigate(['album/', albumId]);
   }
 
   ngOnInit() {

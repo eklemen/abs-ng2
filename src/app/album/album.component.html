@@ -1,3 +1,7 @@
-<p>
-  Single Album
-</p>
+<h2>
+  {{albumTitle}}
+</h2>
+<div *ngFor="let image of images">
+  <p>{{image.title}}</p>
+  <img [src]="image.link" [alt]="image.title">
+</div>

@@ -11,7 +11,9 @@ import { ApiService } from '../shared/api.service';
   styleUrls: ['./album.component.scss']
 })
 export class AlbumComponent implements OnInit {
-  public album: Album[];
+  public album: any;
+  public albumTitle: string;
+  public images: any[];
   errorMessage: string;
 
   constructor(
@@ -31,12 +33,18 @@ export class AlbumComponent implements OnInit {
   // }
 
   ngOnInit(): void {
-    this.apiService.getSingleAlbum('someid');
-    // this.route.params.forEach((params: Params) => {
-    //   let id:any = +params['id'];
-    //   this.apiService.getSingleAlbum(id)
-    //       .subscribe((album: any) => {debugger;})
-    // });
+    this.route.params.forEach((params: Params) => {
+      let id:any = params['id'];
+      this.apiService.getSingleAlbum(id)
+          .subscribe(
+              (album: any) => {
+                console.log('album', album);
+                this.albumTitle = album.title;
+                this.images = album.images;
+                return;
+              }
+          )
+    });
   }
 
 }

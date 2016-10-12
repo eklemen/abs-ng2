@@ -7,10 +7,12 @@ import { RootObject, Album } from './albums';
 @Injectable()
 export class ApiService {
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
-  private body : any;
-  public albumList : any[] = [];
+  private body: any;
+  public albumList: any[] = [];
 
   getAlbums (): Observable<RootObject> {
+      // Need to cache the results instead
+      this.albumList = [];
     return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
         .map(res => res.json().data) // Get the albums array
         .flatMap( albums => {
@@ -30,8 +32,10 @@ export class ApiService {
         .catch<RootObject>(this.handleError)
   }
 
-  getSingleAlbum (albumId: any): any {
-      return 'Yep it works';
+  getSingleAlbum (albumId: any): Observable<RootObject> {
+      return this.http.get(`${this.baseUrl}/album/${albumId}`, {headers: this.headers()})
+          .map(album => album.json().data)
+          .catch<RootObject>(this.handleError)
   }
 
   private handleError (error: any) {

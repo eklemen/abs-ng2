@@ -20,7 +20,6 @@ export class Album {
     in_gallery: boolean;
     is_ad: boolean;
     order: number;
-
     constructor(id: string,
                 description: string,
                 title: string,
