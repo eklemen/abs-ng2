@@ -1,14 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { ApiService } from '../shared/api.service';
 import { Album } from '../shared/albums';
-import { Router } from '@angular/router';
+import {LoadingPage} from "../shared/loading/loading";
 
 @Component({
   selector: 'abs-gallery',
   templateUrl: './gallery.component.html',
   styleUrls: ['./gallery.component.scss']
 })
-export class GalleryComponent implements OnInit {
+export class GalleryComponent extends LoadingPage implements OnInit {
   public albums: Album[];
   private selectedAlbum: Album;
   errorMessage: string;
@@ -16,13 +18,16 @@ export class GalleryComponent implements OnInit {
   constructor(
       private apiService: ApiService,
       private router: Router
-  ) {}
+  ) {
+    super(true);
+  }
 
   getAlbums() {
     this.apiService.getAlbums()
         .subscribe(
             (ablums: any) => {
               console.log('all albums from home', ablums);
+              this.ready();
               return this.albums = ablums;
             },
             error =>  this.errorMessage = <any>error);
@@ -34,7 +39,6 @@ export class GalleryComponent implements OnInit {
   }
 
   getSingleAlbum(albumId): void {
-    console.log('passed in value', albumId);
     console.log('this.selectedAlbum.id', this.selectedAlbum.id);
     this.router.navigate(['album/', albumId]);
   }

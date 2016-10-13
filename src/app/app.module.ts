@@ -10,7 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
 import { ApiService } from './shared';
-import { LoadingIndicator, LoadingPage } from './shared/loading/loading';
+import { LoadingIndicator } from './shared/loading/loading';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -28,8 +28,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     GalleryComponent,
     AboutComponent,
     AlbumComponent,
-    LoadingIndicator,
-    LoadingPage
+    LoadingIndicator
   ],
   providers: [
     ApiService

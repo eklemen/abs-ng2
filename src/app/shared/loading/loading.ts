@@ -15,6 +15,8 @@ export class LoadingPage {
 
 @Component({
     selector: 'loading-indicator',
-    templateUrl: './loading'
+    templateUrl: './loading.html',
+    stylesUrls: ['./loading.scss']
+
 })
 export class LoadingIndicator {}

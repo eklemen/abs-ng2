@@ -3,13 +3,14 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ApiService } from '../shared/api.service';
+import {LoadingPage} from "../shared/loading/loading";
 
 @Component({
   selector: 'abs-album',
   templateUrl: './album.component.html',
   styleUrls: ['./album.component.scss']
 })
-export class AlbumComponent implements OnInit {
+export class AlbumComponent extends LoadingPage implements OnInit {
   public album: any;
   public albumTitle: string;
   public images: any[];
@@ -19,7 +20,9 @@ export class AlbumComponent implements OnInit {
       private apiService: ApiService,
       private route: ActivatedRoute,
       private location: Location
-  ) {}
+  ) {
+      super(true);
+  }
 
     getAlbumImages(){
         this.route.params.forEach((params: Params) => {
@@ -30,8 +33,10 @@ export class AlbumComponent implements OnInit {
                         console.log('album', album);
                         this.albumTitle = album.title;
                         this.images = album.images;
+                        this.ready();
                         return;
-                    }
+                    },
+                    error =>  this.errorMessage = <any>error
                 );
         });
     }

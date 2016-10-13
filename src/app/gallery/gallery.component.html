@@ -1,11 +1,21 @@
-<div class="gallery">
-  <p>
-    Gallery Works!
-  </p>
+<div [ngSwitch]="loading">
 
-  <div *ngFor="let album of albums">
-    <h2>{{album.title}}</h2>
-    <p>{{album.description}}</p>
-    <img (click)="onSelect(album)" [src]="album.cover" alt="album.title">
+  <!--if Loading-->
+  <div *ngSwitchCase="true">
+    <loading-indicator></loading-indicator>
   </div>
+
+  <!--if Data-->
+  <div class="gallery" *ngSwitchCase="false">
+    <p>
+      Gallery Works!
+    </p>
+
+    <div *ngFor="let album of albums">
+      <h2>{{album.title}}</h2>
+      <p>{{album.description}}</p>
+      <img (click)="onSelect(album)" [src]="album.cover" alt="album.title">
+    </div>
+  </div>
+
 </div>

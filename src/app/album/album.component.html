@@ -1,9 +1,23 @@
-<div class="album-wrapper">
-  <h2>
-    {{albumTitle}}
-  </h2>
-  <div *ngFor="let image of images">
-    <p>{{image.title}}</p>
-    <img [src]="image.link" [alt]="image.title">
+<div [ngSwitch]="loading">
+
+  <!--if Loading-->
+  <div *ngSwitchCase="true">
+    <loading-indicator></loading-indicator>
   </div>
+
+  <!--if Data-->
+  <div *ngSwitchCase="false">
+    <div class="album-wrapper">
+      <h2>
+        {{albumTitle}}
+      </h2>
+      <div *ngFor="let image of images">
+        <p>{{image.title}}</p>
+        <img [src]="image.link" [alt]="image.title">
+      </div>
+    </div>
+  </div>
+
 </div>
+
+
