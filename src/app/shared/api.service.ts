@@ -40,7 +40,6 @@ export class ApiService {
               .map(album => {this.singleAlbum[albumId] = album.json().data; return album.json().data})
               .catch<RootObject>(this.handleError);
       }
-
       return Observable.of(this.singleAlbum[albumId]);
   }
 
