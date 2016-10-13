@@ -3,12 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
 import { ApiService } from './shared';
+import { LoadingIndicator, LoadingPage } from './shared/loading/loading';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -25,7 +27,9 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     HomeComponent,
     GalleryComponent,
     AboutComponent,
-    AlbumComponent
+    AlbumComponent,
+    LoadingIndicator,
+    LoadingPage
   ],
   providers: [
     ApiService

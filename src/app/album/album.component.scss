@@ -1,0 +1,14 @@
+.album-wrapper{
+  height: 300px;
+  overflow: hidden;
+  padding-bottom: 30px;
+  div{
+    width: 25%;
+    float: left;
+    margin: 20px;
+    display: inline-block;
+    img{
+      width: 100%;
+    }
+  }
+}

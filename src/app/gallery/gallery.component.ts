@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../shared/api.service';
 import { Album } from '../shared/albums';
-import { Router } from '@angular/router'
-import { Observable } from 'rxjs/Observable';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'abs-gallery',
@@ -29,7 +28,7 @@ export class GalleryComponent implements OnInit {
             error =>  this.errorMessage = <any>error);
   }
 
-  onSelect(album: Album){
+  onSelect( album: Album){
     this.selectedAlbum = album;
     this.getSingleAlbum(this.selectedAlbum.id);
   }

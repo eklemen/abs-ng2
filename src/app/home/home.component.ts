@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../shared/api.service';
-import {RouterLink} from "@angular/router";
+// import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'my-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  directives: [RouterLink]
+  // directives: [RouterLink]
 })
 export class HomeComponent implements OnInit {
 

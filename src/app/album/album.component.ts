@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from '../shared/albums';
-import { Router, Params, ActivatedRoute } from '@angular/router'
-import { Location } from '@angular/common'
+import { Params, ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { ApiService } from '../shared/api.service';
 
@@ -22,29 +21,23 @@ export class AlbumComponent implements OnInit {
       private location: Location
   ) {}
 
-  // getSingleAlbum(albumId) {
-  //   this.apiService.getSingleAlbum(albumId)
-  //       .subscribe(
-  //           (ablum: any) => {
-  //             console.log('simgle album from albumComponent', ablum);
-  //             return this.album = ablum;
-  //           },
-  //           error =>  this.errorMessage = <any>error);
-  // }
+    getAlbumImages(){
+        this.route.params.forEach((params: Params) => {
+            let id: any = params['id'];
+            this.apiService.getSingleAlbum(id)
+                .subscribe(
+                    (album: any) => {
+                        console.log('album', album);
+                        this.albumTitle = album.title;
+                        this.images = album.images;
+                        return;
+                    }
+                );
+        });
+    }
 
   ngOnInit(): void {
-    this.route.params.forEach((params: Params) => {
-      let id:any = params['id'];
-      this.apiService.getSingleAlbum(id)
-          .subscribe(
-              (album: any) => {
-                console.log('album', album);
-                this.albumTitle = album.title;
-                this.images = album.images;
-                return;
-              }
-          )
-    });
+    this.getAlbumImages()
   }
 
 }

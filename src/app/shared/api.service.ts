@@ -1,35 +1,36 @@
 import { Injectable } from '@angular/core';
-import { Http, Response, Headers } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { RootObject, Album } from './albums';
-// import { ROOT } from '../mock-imgur';
 
 @Injectable()
 export class ApiService {
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
-  private body: any;
-  public albumList: any[] = [];
+  albumList: any[] = [];
 
   getAlbums (): Observable<RootObject> {
-      // Need to cache the results instead
-      this.albumList = [];
-    return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
-        .map(res => res.json().data) // Get the albums array
-        .flatMap( albums => {
-          // this.albums = albums;
-          return albums;
-        })
-        .flatMap((album, index )=> {
-          let albumDetails = new Album(album.id, album.description, album.title, null);
-          this.albumList.push(albumDetails);
-          return this.http.get(`${this.baseUrl}/image/${album.cover}`, {headers: this.headers()})
-              .map((image) => {
-                let coverImage = image.json().data.link;
-                albumDetails.cover = coverImage;
-                return this.albumList;
-              });
-        })
-        .catch<RootObject>(this.handleError)
+      // check if we have already saved the albums, if not make the call to imgur
+      if(this.albumList.length){
+          return Observable.of(this.albumList);
+      } else {
+          return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
+              .map(res => res.json().data) // Get the albums array
+              .flatMap( albums => {
+                  return albums;
+              })
+              .flatMap(album => {
+                  let albumDetails = new Album(album.id, album.description, album.title, null);
+                  this.albumList.push(albumDetails);
+                  return this.http.get(`${this.baseUrl}/image/${album.cover}`, {headers: this.headers()})
+                      .map((image) => {
+                          let coverImage = image.json().data.link;
+                          albumDetails.cover = coverImage;
+                          return this.albumList;
+                      });
+              })
+              .catch<RootObject>(this.handleError)
+      }
+
   }
 
   getSingleAlbum (albumId: any): Observable<RootObject> {
