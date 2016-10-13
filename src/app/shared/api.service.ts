@@ -7,10 +7,11 @@ import { RootObject, Album } from './albums';
 export class ApiService {
   private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
   albumList: any[] = [];
+  singleAlbum: any = {};
 
   getAlbums (): Observable<RootObject> {
       // check if we have already saved the albums, if not make the call to imgur
-      if(this.albumList.length){
+      if (this.albumList.length) {
           return Observable.of(this.albumList);
       } else {
           return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
@@ -28,15 +29,19 @@ export class ApiService {
                           return this.albumList;
                       });
               })
-              .catch<RootObject>(this.handleError)
+              .catch<RootObject>(this.handleError);
       }
 
   }
 
-  getSingleAlbum (albumId: any): Observable<RootObject> {
-      return this.http.get(`${this.baseUrl}/album/${albumId}`, {headers: this.headers()})
-          .map(album => album.json().data)
-          .catch<RootObject>(this.handleError)
+  getSingleAlbum (albumId: any): Observable<any> {
+      if (!this.singleAlbum[albumId]) {
+          return this.http.get(`${this.baseUrl}/album/${albumId}`, {headers: this.headers()})
+              .map(album => {this.singleAlbum[albumId] = album.json().data; return album.json().data})
+              .catch<RootObject>(this.handleError);
+      }
+
+      return Observable.of(this.singleAlbum[albumId]);
   }
 
   private handleError (error: any) {
@@ -48,7 +53,7 @@ export class ApiService {
     return Observable.throw(errMsg);
   }
 
-  private headers(){
+  private headers() {
     let headers = new Headers();
     headers.append('Authorization', 'Client-ID f83e63dbf0b9425');
     headers.append('Content-Type', 'application/json');
