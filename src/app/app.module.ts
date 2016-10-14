@@ -3,6 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Using with ng2-bootstrap
+// http://valor-software.com/ng2-bootstrap/index-bs4.html#/
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';

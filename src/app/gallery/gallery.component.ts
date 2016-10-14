@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ApiService } from '../shared/api.service';
 import { Album } from '../shared/types/albums';
 import {LoadingPage} from "../shared/loading/loading";
+import { ProgressbarModule } from 'ng2-bootstrap/components/progressbar';
 
 @Component({
   selector: 'abs-gallery',

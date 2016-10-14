@@ -9,9 +9,10 @@
   <div class="gallery" *ngSwitchCase="false">
     <p>
       Gallery Works!
+      <!--<progress class="progress" value="55" max="100"></progress>-->
     </p>
 
-    <div *ngFor="let album of albums">
+    <div *ngFor="let album of albums" class="col-sm-6 col-md-4 col-lg-3">
       <h2>{{album.title}}</h2>
       <p>{{album.description}}</p>
       <img (click)="onSelect(album)" [src]="album.cover" alt="album.title">
