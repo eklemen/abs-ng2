@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../shared/api.service';
-import { Album } from '../shared/albums';
+import { Album } from '../shared/types/albums';
 import {LoadingPage} from "../shared/loading/loading";
 
 @Component({

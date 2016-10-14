@@ -1,4 +1,4 @@
-import { RootObject } from './shared/albums';
+import { RootObject } from './shared/types/albums';
 export const IMGURALBUMS: RootObject = {
   "data": [
     {
