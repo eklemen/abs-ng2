@@ -50,7 +50,7 @@ export class ApiService {
             return this.http.get(`${this.baseUrl}/album/${albumId}`, {headers: this.headers()})
                 .map(album => {
                     this.cachedAlbums[albumId] = album.json().data;
-                    return album.json().data
+                    return album.json().data;
                 })
                 .catch<RootObject>(this.handleError);
         }

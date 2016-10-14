@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 import { ApiService } from '../shared/api.service';
 import { Album } from '../shared/types/albums';
-import {LoadingPage} from "../shared/loading/loading";
-import { ProgressbarModule } from 'ng2-bootstrap/components/progressbar';
+import {LoadingPage} from '../shared/loading/loading';
+// import { ProgressbarModule } from 'ng2-bootstrap/components/progressbar';
 
 @Component({
   selector: 'abs-gallery',
@@ -34,7 +34,7 @@ export class GalleryComponent extends LoadingPage implements OnInit {
             error =>  this.errorMessage = <any>error);
   }
 
-  onSelect( album: Album){
+  onSelect ( album: Album) {
     this.selectedAlbum = album;
     this.getSingleAlbum(this.selectedAlbum.id);
   }

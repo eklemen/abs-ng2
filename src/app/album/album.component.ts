@@ -3,7 +3,7 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { ApiService } from '../shared/api.service';
-import {LoadingPage} from "../shared/loading/loading";
+import {LoadingPage} from '../shared/loading/loading';
 
 @Component({
   selector: 'abs-album',
@@ -24,7 +24,7 @@ export class AlbumComponent extends LoadingPage implements OnInit {
       super(true);
   }
 
-    getAlbumImages(){
+    getAlbumImages () {
         this.route.params.forEach((params: Params) => {
             let id: any = params['id'];
             this.apiService.getSingleAlbum(id)
@@ -42,7 +42,7 @@ export class AlbumComponent extends LoadingPage implements OnInit {
     }
 
   ngOnInit(): void {
-    this.getAlbumImages()
+    this.getAlbumImages();
   }
 
 }
