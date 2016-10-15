@@ -11,9 +11,11 @@
       <h2>
         {{albumTitle}}
       </h2>
-      <div *ngFor="let image of images">
+      <div *ngFor="let image of images" class="image-detail col-sm-6 col-md-4 col-lg-3">
         <p>{{image.title}}</p>
-        <img [src]="image.link" [alt]="image.title">
+        <div class="img-wrapper">
+          <img [src]="image.link" [alt]="image.title">
+        </div>
       </div>
     </div>
   </div>
