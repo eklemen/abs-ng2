@@ -6,11 +6,11 @@
 header {
   background-color: rgba(35,35,35, 0.7);
   padding: 16px;
-  position: fixed;
+  // position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  // box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 main {
