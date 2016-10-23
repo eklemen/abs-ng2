@@ -20,7 +20,7 @@ export class ApiService {
                     return albums;
                 })
                 .flatMap((album: Album) => {
-                    let albumDetails = new Album(album.id, album.description, album.title, null);
+                    let albumDetails = new Album(album.id, album.description, album.title, null, album.images_count);
                     this.albumList.push(albumDetails);
                     return this.http.get(`${this.baseUrl}/image/${album.cover}`, {headers: this.headers()})
                         .map((image) => {

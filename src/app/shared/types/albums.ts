@@ -23,11 +23,13 @@ export class Album {
     constructor(id: string,
                 description: string,
                 title: string,
-                cover: string) {
+                cover: string,
+                images_count: number) {
         this.id = id;
         this.description = description;
         this.title = title;
         this.cover = cover;
+        this.images_count = images_count;
     }
 }
 

@@ -22,7 +22,10 @@
             <p>{{album.description}}</p>
           </div>
           <hr>
-          <button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm">View Album</button>
+          <div class="w-100">
+            <span class="float-xs-left"><em>{{album.images_count}} images</em></span>
+            <button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm float-xs-right">View Album</button>
+          </div>          
         </div>
       </div>
     </div>

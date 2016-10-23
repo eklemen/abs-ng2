@@ -1,15 +1,21 @@
 .gallery-wrapper{
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   overflow: hidden;
   padding-bottom: 30px;
   .image-detail{
-    height: 350px;
+    height: 400px;
     overflow: hidden;
     padding: 0;
+    .w-100{
+      span{
+        float: left;
+      }
+    }
     .btn{
       border-radius: 0;
       transition: all .2s ease-out;
+      float: right;
     }
     p{
       margin-bottom: 0;
