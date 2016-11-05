@@ -7,29 +7,30 @@
 
   <!--if Data-->
   <div *ngSwitchCase="false">
-    <p>
-      Gallery Works!
-    </p>
     <div class="gallery-wrapper">
-      <div *ngFor="let album of albums" class="col-sm-6 col-md-4">
-        <div class="image-detail img-thumbnail h-100">
-          <div class="card-top">
+
+
+
+
+
+      <div *ngFor="let album of albums" class="image-detail col-sm-6 col-md-4">
             <div class="img-wrapper">
               <img (click)="onSelect(album)" class="" [src]="album.cover" alt="album.title">
             </div>
             
-            <div class="caption px-1">
-              <h4>{{album.title}}</h4>
-              <p>{{album.description}}</p>
+            <div class="">
+              <div>
+                <h4>{{album.title}}</h4>
+                <p>{{album.description}}</p>
+              </div>
             </div>
-          </div>
 
-          <div class="w-100">
+          <div class="view-more">
             <hr>
             <span class=""><em>{{album.images_count}} images</em></span>
             <button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm ">View Album</button>
           </div>          
-        </div>
+
       </div>
     </div>
   </div>
