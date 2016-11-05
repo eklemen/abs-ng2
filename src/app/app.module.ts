@@ -14,6 +14,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
 import { ApiService } from './shared';
 import { LoadingIndicator } from './shared/loading/loading';
+import { ImageModal } from './shared/ImageModal/image-modal-popup';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -31,7 +32,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     GalleryComponent,
     AboutComponent,
     AlbumComponent,
-    LoadingIndicator
+    LoadingIndicator,
+    ImageModal
   ],
   providers: [
     ApiService

@@ -38,11 +38,11 @@ export class ApiService {
      * getSingleAlbum will push to cachedAlbums on first view caching the response
      * Check this object before making get request to imgur
      * Example of cachedAlbums:
-     cachedAlbums =
-     {
-     'lkja': {response},
-     'qwer': {response}
-     }
+     *  cachedAlbums =
+     *  {
+     *      'lkja': {response},
+     *      'qwer': {response}
+     *  }
 
      */
     getSingleAlbum(albumId: any): Observable<any> {
