@@ -12,19 +12,22 @@
     </p>
     <div class="gallery-wrapper">
       <div *ngFor="let album of albums" class="col-sm-6 col-md-4">
-        <div class="image-detail">
-          <div class="img-wrapper">
-            <img (click)="onSelect(album)" class="img-thumbnail" [src]="album.cover" alt="album.title">
+        <div class="image-detail img-thumbnail h-100">
+          <div class="card-top">
+            <div class="img-wrapper">
+              <img (click)="onSelect(album)" class="" [src]="album.cover" alt="album.title">
+            </div>
+            
+            <div class="caption px-1">
+              <h4>{{album.title}}</h4>
+              <p>{{album.description}}</p>
+            </div>
           </div>
-          
-          <div>
-            <h4>{{album.title}}</h4>
-            <p>{{album.description}}</p>
-          </div>
-          <hr>
+
           <div class="w-100">
-            <span class="float-xs-left"><em>{{album.images_count}} images</em></span>
-            <button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm float-xs-right">View Album</button>
+            <hr>
+            <span class=""><em>{{album.images_count}} images</em></span>
+            <button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm ">View Album</button>
           </div>          
         </div>
       </div>
