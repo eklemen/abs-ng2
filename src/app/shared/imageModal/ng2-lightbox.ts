@@ -3,10 +3,20 @@ import {Component, Input,Output,ElementRef,EventEmitter,OnInit} from '@angular/c
     selector: 'ImageModal',
    template: `
    <div class="ng-gallery" *ngIf="showRepeat"> 
-     <div *ngFor ="let i of modalImages; let index = index">
-       <img src="{{ i.link }}" class="ng-thumb" (click)="openGallery(index)" alt="Image {{ index + 1 }}" />
+
+   <div *ngFor="let i of modalImages; let index = index" class="image-detail col-sm-6 col-md-4">
+      <div class="img-wrapper">
+        <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="image.title">
+      </div>
+
+      <div>
+        <h4>{{i.title}}</h4>
+        <p>{{i.description}}</p>
       </div>
    </div>
+
+   </div>
+
    <div class="ng-overlay" *ngIf="opened">
     <div class="ng-gallery-content" >
     <div class="uil-ring-css" *ngIf="loading"><div></div></div>         

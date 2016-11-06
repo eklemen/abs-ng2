@@ -15,6 +15,8 @@ export class AlbumComponent extends LoadingPage implements OnInit {
   public albumTitle: string;
   public images: any[];
   errorMessage: string;
+  openModalWindow:boolean=false;
+  imagePointer:number;
 
   constructor(
       private apiService: ApiService,
@@ -23,6 +25,22 @@ export class AlbumComponent extends LoadingPage implements OnInit {
   ) {
       super(true);
   }
+
+  OpenImageModel(imageSrc,images) {
+    var imageModalPointer;
+    for (var i = 0; i < images.length; i++) {
+            if (imageSrc === images[i].link) {
+                imageModalPointer = i;
+                break;
+            }
+        }
+    this.openModalWindow = true;
+    this.images = images;
+    this.imagePointer  = imageModalPointer;
+    }
+    cancelImageModel() {
+    this.openModalWindow = false;
+    }
 
     getAlbumImages () {
         this.route.params.forEach((params: Params) => {
