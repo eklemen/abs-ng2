@@ -122,7 +122,7 @@ img.ng-thumb {
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 100px;
+  bottom: 30px;
 }
 
 .ng-gallery-content > .ng-thumbnails-wrapper {
@@ -264,3 +264,31 @@ uiload > div {
     -o-animation: uil-ring-anim 1s linear infinite;
     animation: uil-ring-anim 1s linear infinite; 
 }
+
+.image-detail{
+    min-height: 300px;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    padding-right: 5px;
+    padding-left: 5px;
+    .img-wrapper{
+      margin-bottom: 1rem;
+      background-color: #000;
+      display: block;
+      position: relative;
+      height: 0;
+      padding: 78% 0 0 0;
+      overflow: hidden;
+      img{
+        position: absolute;
+        display: block;
+        max-width: 100%;
+        max-height: 100%;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+  }

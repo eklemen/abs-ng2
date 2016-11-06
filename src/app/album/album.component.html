@@ -12,16 +12,20 @@
       <h2>
         {{albumTitle}}
       </h2>
-      <div *ngFor="let image of images; let index = index" class="image-detail col-sm-6 col-md-4">
+      <ImageModal [modalImages]="images" [imagePointer]="imagePointer" (cancelEvent)="cancelImageModel()"></ImageModal>
+      <!--<div *ngFor="let image of images; let index = index" class="image-detail col-sm-6 col-md-4">
         <div class="img-wrapper">
-          <img [src]="image.link" [alt]="image.title">
+          <img [src]="image.link" (click)="openGallery(index)" [alt]="image.title">
         </div>
 
         <div>
           <h4>{{image.title}}</h4>
           <p>{{image.description}}</p>
         </div>
-      </div>
+      </div>-->
+      <!--<div *ngIf="openModalWindow">
+        <ImageModal [modalImages]="images" [imagePointer] = "imagePointer" (cancelEvent) ="cancelImageModel()"></ImageModal>
+      </div>-->
       
       
     </div>

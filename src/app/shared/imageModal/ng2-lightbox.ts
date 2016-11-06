@@ -6,7 +6,7 @@ import {Component, Input,Output,ElementRef,EventEmitter,OnInit} from '@angular/c
 
    <div *ngFor="let i of modalImages; let index = index" class="image-detail col-sm-6 col-md-4">
       <div class="img-wrapper">
-        <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="image.title">
+        <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="i.title">
       </div>
 
       <div>
@@ -24,7 +24,7 @@ import {Component, Input,Output,ElementRef,EventEmitter,OnInit} from '@angular/c
      <a class="nav-left" *ngIf="modalImages.length >1" (click)="prevImage()"><i class="fa fa-angle-left"></i></a>
      <img *ngIf="!loading" src="{{imgSrc}}" (click)="nextImage()" class="effect" />
      <a class="nav-right" *ngIf="modalImages.length >1" (click)="nextImage()"><i class="fa fa-angle-right"></i></a>
-     <span class="info-text">{{ currentImageIndex + 1 }}/{{ modalImages.length }} - Image {{currentImageIndex+1}}</span>
+     <span class="info-text">{{ currentImageIndex + 1 }}/{{ modalImages.length }} - {{ modalImages[currentImageIndex].title}}</span>
    </div>
    </div>
        `,
