@@ -7,7 +7,7 @@
     min-height: 300px;
     overflow: hidden;
     margin-bottom: 2rem;
-    padding: 1.5rem;
+    padding: 1.2rem;
     .img-wrapper{
       margin-bottom: 1rem;
       display: block;
@@ -27,9 +27,7 @@
         bottom: 0;
         margin: auto;
         transition: all 0.2s ease-out;
-        &:hover{
-          transform: scale(1.05);
-        }
+        box-shadow: 6px 6px 10px #aaa;
       }
     }
     .view-more{
@@ -40,6 +38,7 @@
       button {
         float: right;
         margin-right: 1rem;
+        transition: all 0.2s ease-out;
       }
     }
   }

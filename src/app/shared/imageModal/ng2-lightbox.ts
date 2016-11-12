@@ -1,33 +1,7 @@
 import {Component, Input,Output,ElementRef,EventEmitter,OnInit} from '@angular/core';
 @Component({
     selector: 'ImageModal',
-   template: `
-   <div class="ng-gallery" *ngIf="showRepeat"> 
-
-   <div *ngFor="let i of modalImages; let index = index" class="image-detail col-sm-6 col-md-4">
-      <div class="img-wrapper">
-        <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="i.title">
-      </div>
-
-      <div>
-        <h4>{{i.title}}</h4>
-        <p>{{i.description}}</p>
-      </div>
-   </div>
-
-   </div>
-
-   <div class="ng-overlay" *ngIf="opened">
-    <div class="ng-gallery-content" >
-    <div class="uil-ring-css" *ngIf="loading"><div></div></div>         
-    <a class="close-popup" (click)="closeGallery()"><i class="fa fa-close"></i></a>
-     <a class="nav-left" *ngIf="modalImages.length >1" (click)="prevImage()"><i class="fa fa-angle-left"></i></a>
-     <img *ngIf="!loading" src="{{imgSrc}}" (click)="nextImage()" class="effect" />
-     <a class="nav-right" *ngIf="modalImages.length >1" (click)="nextImage()"><i class="fa fa-angle-right"></i></a>
-     <span class="info-text">{{ currentImageIndex + 1 }}/{{ modalImages.length }} - {{ modalImages[currentImageIndex].title}}</span>
-   </div>
-   </div>
-       `,
+   templateUrl: './ng2-lightbox.html',
     styleUrls: ['./modal.scss']
 })
 export class ImageModal implements OnInit {
