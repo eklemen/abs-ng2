@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiService } from './shared';
 
 import '../style/app.scss';
 
@@ -12,17 +11,16 @@ import '../style/app.scss';
 export class AppComponent {
   public isNotHome = false;
 
-  constructor(private api: ApiService, private router:Router) {
+  constructor(private router:Router) {
   }
 
   checkRoute(){
     this.router.events.subscribe( event => {
       const regex = /^\/$/ig;
       if (event.url.match(regex) === null){
-        this.isNotHome = true
-      } else {
-        this.isNotHome = false;
+        return this.isNotHome = true
       }
+      this.isNotHome = false;
     });
   }
   ngOnInit(){
