@@ -1,4 +1,4 @@
-<div [ngSwitch]="loading" class="h-100">
+<div [ngSwitch]="loading">
 
     <!--if Loading-->
     <div *ngSwitchCase="true">
@@ -6,8 +6,7 @@
     </div>
 
     <!--if Data-->
-    <div *ngSwitchCase="false" class="background">
-        <div class="overlay">
+    <div *ngSwitchCase="false">
             <div class="album-wrapper">
 
                 <h2>
@@ -31,7 +30,6 @@
 
 
             </div>
-        </div>
     </div>
 
 </div>

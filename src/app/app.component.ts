@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 import { ApiService } from './shared';
 
 import '../style/app.scss';
@@ -10,9 +10,22 @@ import '../style/app.scss';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  url = 'https://github.com/preboot/angular2-webpack';
+  public isNotHome = false;
 
-  constructor(private api: ApiService) {
-    // Do something with api
+  constructor(private api: ApiService, private router:Router) {
+  }
+
+  checkRoute(){
+    this.router.events.subscribe( event => {
+      const regex = /^\/$/ig;
+      if (event.url.match(regex) === null){
+        this.isNotHome = true
+      } else {
+        this.isNotHome = false;
+      }
+    });
+  }
+  ngOnInit(){
+    this.checkRoute();
   }
 }

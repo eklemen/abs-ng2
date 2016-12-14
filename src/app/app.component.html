@@ -5,6 +5,8 @@
     <a [routerLink]="['gallery']">Gallery</a>
   </nav>
 </header>
-<main class="h-100">
-  <router-outlet></router-outlet>
+<main [class.background]="isNotHome">
+  <div class="overlay">
+    <router-outlet></router-outlet>
+  </div>
 </main>
