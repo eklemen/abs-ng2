@@ -5,10 +5,14 @@ loading-indicator {
   background: white;
   div {
     position: absolute;
-    -webkit-transform: translate(-50%,-50%) scale(0.34);
     transform: translate(-50%,-50%) scale(0.34);
     top: 190px;
     left: 50%;
   }
 
+}
+.loading-background{
+  background-color: white;
+  max-width: 350px;
+  margin: 2rem auto;
 }
