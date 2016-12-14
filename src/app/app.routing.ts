@@ -6,7 +6,8 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { AlbumComponent } from './album/album.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'gallery', component: GalleryComponent },
   { path: 'album/:id', component: AlbumComponent },
   { path: 'about', component: AboutComponent}

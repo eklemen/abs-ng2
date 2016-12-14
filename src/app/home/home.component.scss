@@ -8,19 +8,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    h1{
+        font-size: 5em;
+        color: black;
+    }
     .banner{
-        h1{
-            font-size: 5em;
-        }
         .btn{
+            background-color: #0194a2;
+            margin-top: 2rem;
             width: 200px;
             padding: 10px 50px;
             font-size: 2em;
-            // background-color: transparent;
-            border: solid 1px white;
+            border: none;
             transition: all .3s ease;
             &:hover{
-                // background-color: rgba(60,60,60,0.5);
+                background-color: darken(#0194a2, 10%);
+                transform: scale(0.98);
             }
         }
     }
