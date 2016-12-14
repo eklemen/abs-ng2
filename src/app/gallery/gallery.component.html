@@ -1,38 +1,41 @@
-<div [ngSwitch]="loading">
+<div [ngSwitch]="loading" class="h-100">
 
-  <!--if Loading-->
-  <div *ngSwitchCase="true">
-    <loading-indicator></loading-indicator>
-  </div>
-
-  <!--if Data-->
-  <div *ngSwitchCase="false">
-    <div class="gallery-wrapper">
-
-
-
-
-
-      <div *ngFor="let album of albums" class="image-detail col-sm-6 col-md-4">
-            <div class="img-wrapper">
-              <img (click)="onSelect(album)" class="" [src]="album.cover" alt="album.title">
-            </div>
-            
-            <div class="">
-              <div>
-                <h4>{{album.title}}</h4>
-                <p>{{album.description}}</p>
-              </div>
-            </div>
-
-          <div class="view-more">
-            <hr>
-            <span class=""><em>{{album.images_count}} images</em></span>
-            <button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm ">View Album</button>
-          </div>          
-
-      </div>
+    <!--if Loading-->
+    <div *ngSwitchCase="true">
+        <loading-indicator></loading-indicator>
     </div>
-  </div>
+
+    <!--if Data-->
+    <div *ngSwitchCase="false" class="background">
+        <div class="overlay">
+            <div class="gallery-wrapper">
+
+
+                <div *ngFor="let album of albums" class="image-detail col-sm-6 col-md-4">
+                    <div class="w-90">
+                        <div class="img-wrapper">
+                            <img (click)="onSelect(album)" class="" [src]="album.cover" alt="album.title">
+                        </div>
+
+                        <div class="">
+                            <div>
+                                <h4>{{album.title}}</h4>
+                                <p>{{album.description}}</p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="view-more">
+
+                            <div><span><em>{{album.images_count}} images</em></span></div>
+                            <div><button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm ">View
+                                Album
+                            </button></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
 </div>

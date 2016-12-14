@@ -1,15 +1,18 @@
 <div class="ng-gallery" *ngIf="showRepeat">
 
     <div *ngFor="let i of modalImages; let index = index" class="image-detail col-sm-6 col-md-4">
-        <div class="img-wrapper">
-            <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="i.title">
-        </div>
+        <div class="w-90">
+            <div class="img-wrapper">
+                <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="i.title">
+            </div>
 
-        <div>
-            <h4>{{i.title}}</h4>
-            <p>{{i.description}}</p>
+            <div>
+                <h4>{{i.title}}</h4>
+                <p>{{i.description}}</p>
+            </div>
         </div>
     </div>
+
 
 </div>
 

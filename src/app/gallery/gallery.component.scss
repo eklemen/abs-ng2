@@ -1,43 +1,57 @@
-.gallery-wrapper{
+.background {
+  background-image: url('/img/woodenBg.jpg');
+  background-size: cover;
+  position: relative;
+  height: 100%;
+}
+.gallery-wrapper {
   overflow: hidden;
   max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 2rem 30px 2rem;
-  .image-detail{
+  padding: 5rem 2rem 30px 2rem;
+  .image-detail {
     min-height: 300px;
     overflow: hidden;
     margin-bottom: 2rem;
     padding: 1.2rem;
-    .img-wrapper{
-      margin-bottom: 1rem;
-      display: block;
-      position: relative;
-      height: 0;
-      padding: 78% 0 0 0;
-      overflow: hidden;
-      img{
-        cursor: pointer;
-        position: absolute;
+    .w-90 {
+      width: 97%;
+      margin: 0 auto;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 3px;
+      padding-top: 0.5rem;
+      .img-wrapper {
+        margin-bottom: 1rem;
         display: block;
-        max-width: 100%;
-        max-height: 100%;
-        left: 0;
-        right: 0;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        transition: all 0.2s ease-out;
-        box-shadow: 6px 6px 10px #aaa;
+        position: relative;
+        height: 0;
+        padding: 78% 0 0 0;
+        overflow: hidden;
+        img {
+          cursor: pointer;
+          position: absolute;
+          display: block;
+          max-width: 100%;
+          max-height: 100%;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          transition: all 0.2s ease-out;
+          box-shadow: 6px 6px 10px #aaa;
+        }
       }
     }
-    .view-more{
-      span{
-        float: left;
-        margin-left: 1rem;
+    .view-more {
+      display: flex;
+      justify-content: space-around;
+      padding-bottom: 0.7rem;
+      span {
+        //width: 40%;
       }
       button {
-        float: right;
-        margin-right: 1rem;
+        //width: 40%;
         transition: all 0.2s ease-out;
       }
     }

@@ -1,35 +1,38 @@
-<div [ngSwitch]="loading">
+<div [ngSwitch]="loading" class="h-100">
 
-  <!--if Loading-->
-  <div *ngSwitchCase="true">
-    <loading-indicator></loading-indicator>
-  </div>
-
-  <!--if Data-->
-  <div *ngSwitchCase="false">
-    <div class="album-wrapper">
-
-      <h2>
-        {{albumTitle}}
-      </h2>
-      <ImageModal [modalImages]="images" [imagePointer]="imagePointer" (cancelEvent)="cancelImageModel()"></ImageModal>
-      <!--<div *ngFor="let image of images; let index = index" class="image-detail col-sm-6 col-md-4">
-        <div class="img-wrapper">
-          <img [src]="image.link" (click)="openGallery(index)" [alt]="image.title">
-        </div>
-
-        <div>
-          <h4>{{image.title}}</h4>
-          <p>{{image.description}}</p>
-        </div>
-      </div>-->
-      <!--<div *ngIf="openModalWindow">
-        <ImageModal [modalImages]="images" [imagePointer] = "imagePointer" (cancelEvent) ="cancelImageModel()"></ImageModal>
-      </div>-->
-      
-      
+    <!--if Loading-->
+    <div *ngSwitchCase="true">
+        <loading-indicator></loading-indicator>
     </div>
-  </div>
+
+    <!--if Data-->
+    <div *ngSwitchCase="false" class="background">
+        <div class="overlay">
+            <div class="album-wrapper">
+
+                <h2>
+                    {{albumTitle}}
+                </h2>
+                <ImageModal [modalImages]="images" [imagePointer]="imagePointer"
+                            (cancelEvent)="cancelImageModel()"></ImageModal>
+                <!--<div *ngFor="let image of images; let index = index" class="image-detail col-sm-6 col-md-4">
+                  <div class="img-wrapper">
+                    <img [src]="image.link" (click)="openGallery(index)" [alt]="image.title">
+                  </div>
+
+                  <div>
+                    <h4>{{image.title}}</h4>
+                    <p>{{image.description}}</p>
+                  </div>
+                </div>-->
+                <!--<div *ngIf="openModalWindow">
+                  <ImageModal [modalImages]="images" [imagePointer] = "imagePointer" (cancelEvent) ="cancelImageModel()"></ImageModal>
+                </div>-->
+
+
+            </div>
+        </div>
+    </div>
 
 </div>
 
