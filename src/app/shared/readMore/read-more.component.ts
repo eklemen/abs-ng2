@@ -10,9 +10,17 @@ import { Component, Input, ElementRef, OnInit } from '@angular/core';
     styles: [`
         div{
             transition: all .3s ease;
+            margin-bottom: 5px;
         }
-        a > em{
+        a {
+            float: right;
+        }
+        a > em {
             color: #0194a2;
+            font-weight: bold;
+        }
+        a:hover {
+            cursor: pointer;
         }
         div.collapsed {
             overflow: hidden;
