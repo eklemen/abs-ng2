@@ -53,7 +53,7 @@ export class ImageModal implements OnInit {
     }
     this.currentImageIndex = index;
       this.opened = true;
-     for (var i = 0; i < this.modalImages.length; i++) {
+     for (let i = 0; i < this.modalImages.length; i++) {
             if (i === this.currentImageIndex ) {
               this.imgSrc = this.modalImages[i].link;
               this.loading = false;

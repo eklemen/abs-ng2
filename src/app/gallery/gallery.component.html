@@ -16,18 +16,22 @@
                             <img (click)="onSelect(album)" class="" [src]="album.cover" alt="album.title">
                         </div>
 
-                        <div class="">
+                        <div>
                             <div>
                                 <h4>{{album.title}}</h4>
-                                <p>{{album.description}}</p>
+                                <read-more [text]="album.description" [maxHeight]="48"></read-more>
+                                <!--<div class="gallery-description">-->
+                                    <!--<p>{{album.description}}</p>-->
+                                <!--</div>-->
                             </div>
                         </div>
                         <hr>
                         <div class="view-more">
 
                             <div><span><em>{{album.images_count}} images</em></span></div>
-                            <div><button type="button" (click)="onSelect(album)" class="btn btn-outline-info btn-sm ">View
+                            <div><button type="button" (click)="onSelect(album)" class="btn btn-default btn-sm ">View
                                 Album
+                                <i class="fa fa-chevron-right"></i>
                             </button></div>
                         </div>
                     </div>

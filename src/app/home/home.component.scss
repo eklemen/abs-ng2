@@ -8,6 +8,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    .jumbotron{
+        background-color: rgba(236, 238, 239, 0.9);
+    }
     h1{
         font-size: 5em;
         color: black;
