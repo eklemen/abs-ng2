@@ -5,7 +5,7 @@ import {Photoset, Album, Description, Title} from './types/albums';
 
 @Injectable()
 export class ApiService {
-    private baseUrl: string = 'https://api.flickr.com/services/rest?format=json&nojsoncallback=1';
+    private baseUrl: string = 'https://api.flickr.com/services/rest?format=json';
     private apiKey: string = '&api_key=4f5119269b775b734ed7d65c29881543';
     private userId: string = '&user_id=130620580@N04';
     private fullUrl: string = `${this.baseUrl}${this.apiKey}${this.userId}`;
@@ -19,7 +19,7 @@ export class ApiService {
         } else {
             return this.http.get(`${this.fullUrl}&method=flickr.photosets.getList`,
                  {headers: this.headers()})
-                .map(res => res.json().photosets.photoset) // Get the albums/photosets array
+                .map(res => {debugger; return res.json().photosets.photoset}) // Get the albums/photosets array
                 .flatMap(albums => {
                     albums.map((album: Album) => {
                         let description:any = album.description._content;
