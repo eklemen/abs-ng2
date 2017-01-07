@@ -1,11 +1,14 @@
 import {Injectable} from '@angular/core';
 import {Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import {RootObject, Album} from './types/albums';
+import {Photoset, Album, Description, Title} from './types/albums';
 
 @Injectable()
 export class ApiService {
-    private baseUrl: string = 'https://api.imgur.com/3/account/eklemen';
+    private baseUrl: string = 'https://api.flickr.com/services/rest?format=json&nojsoncallback=1';
+    private apiKey: string = '&api_key=4f5119269b775b734ed7d65c29881543';
+    private userId: string = '&user_id=130620580@N04';
+    private fullUrl: string = `${this.baseUrl}${this.apiKey}${this.userId}`;
     albumList: Album[] = [];
     cachedAlbums: any = {};
 
@@ -14,22 +17,35 @@ export class ApiService {
         if (this.albumList.length) {
             return Observable.of(this.albumList);
         } else {
-            return this.http.get(`${this.baseUrl}/albums`, {headers: this.headers()})
-                .map(res => res.json().data) // Get the albums array
+            return this.http.get(`${this.fullUrl}&method=flickr.photosets.getList`,
+                 {headers: this.headers()})
+                .map(res => res.json().photosets.photoset) // Get the albums/photosets array
                 .flatMap(albums => {
+                    albums.map((album: Album) => {
+                        let description:any = album.description._content;
+                        let title:any = album.title._content;
+                        let albumDetails = new Album(
+                            album.id,
+                            description,
+                            title,
+                            album.photos,
+                            null
+                        );
+                        this.albumList.push(albumDetails);
+                        debugger;
+                        let url:string = this.fullUrl;
+                        return this.http.get(`${url}&method=flickr.photos_getInfo=${album.primary}`,
+                            {headers: this.headers()})
+                            .map( image => {
+                                debugger;
+                                let coverImage = image.json().data.link;
+                                albumDetails.primary = coverImage;
+                                return this.albumList;
+                            });
+                    })
                     return albums;
                 })
-                .flatMap((album: Album) => {
-                    let albumDetails = new Album(album.id, album.description, album.title, null, album.images_count);
-                    this.albumList.push(albumDetails);
-                    return this.http.get(`${this.baseUrl}/image/${album.cover}`, {headers: this.headers()})
-                        .map((image) => {
-                            let coverImage = image.json().data.link;
-                            albumDetails.cover = coverImage;
-                            return this.albumList;
-                        });
-                })
-                .catch<RootObject>(this.handleError);
+                .catch(this.handleError);
         }
 
     }
@@ -45,14 +61,14 @@ export class ApiService {
      *  }
 
      */
-    getSingleAlbum(albumId: any): Observable<any> {
+    getSingleAlbum(albumId: any): any {
         if (!this.cachedAlbums[albumId]) {
             return this.http.get(`${this.baseUrl}/album/${albumId}`, {headers: this.headers()})
                 .map(album => {
                     this.cachedAlbums[albumId] = album.json().data;
                     return album.json().data;
                 })
-                .catch<RootObject>(this.handleError);
+                .catch(this.handleError);
         }
         return Observable.of(this.cachedAlbums[albumId]);
     }
@@ -68,7 +84,6 @@ export class ApiService {
 
     private headers() {
         let headers = new Headers();
-        headers.append('Authorization', 'Client-ID f83e63dbf0b9425');
         headers.append('Content-Type', 'application/json');
         return headers;
     }

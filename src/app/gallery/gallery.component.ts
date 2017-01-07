@@ -27,7 +27,6 @@ export class GalleryComponent extends LoadingPage implements OnInit {
     this.apiService.getAlbums()
         .subscribe(
             (ablums: any) => {
-              console.log('all albums from home', ablums);
               this.ready();
               return this.albums = ablums;
             },
@@ -40,7 +39,6 @@ export class GalleryComponent extends LoadingPage implements OnInit {
   }
 
   getSingleAlbum(albumId): void {
-    console.log('this.selectedAlbum.id', this.selectedAlbum.id);
     this.router.navigate(['album/', albumId]);
   }
 

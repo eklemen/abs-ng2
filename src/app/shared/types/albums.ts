@@ -1,40 +1,62 @@
+export interface Title {
+    _content: string;
+}
+
+export interface Description {
+    _content: string;
+}
+
+
+export interface Photoset {
+    id: string;
+    primary: string;
+    secret: string;
+    server: string;
+    farm: number;
+    photos: string;
+    videos: number;
+    title: Title;
+    description: Description;
+    needs_interstitial: number;
+    visibility_can_see_set: number;
+    count_views: string;
+    count_comments: string;
+    can_comment: number;
+    date_create: string;
+    date_update: string;
+
+}
 export class Album {
     id: string;
-    title: string;
-    description: string;
-    img?: any;
-    datetime: number;
-    cover: string;
-    cover_width: number;
-    cover_height: number;
-    account_url: string;
-    account_id: number;
-    privacy: string;
-    layout: string;
-    views: number;
-    link: string;
-    favorite: boolean;
-    nsfw?: any;
-    section?: any;
-    images_count: number;
-    in_gallery: boolean;
-    is_ad: boolean;
-    order: number;
+    description: any;
+    title: any;
+    photos: string;
+    primary: string;
     constructor(id: string,
-                description: string,
-                title: string,
-                cover: string,
-                images_count: number) {
+                description: any,
+                title: any,
+                photos: string,
+                primary: string) {
         this.id = id;
         this.description = description;
         this.title = title;
-        this.cover = cover;
-        this.images_count = images_count;
+        this.photos = photos;
+        this.primary = primary;
+
     }
 }
 
-export class RootObject {
-    data: any;
-    success: boolean;
-    status: number;
+
+
+export interface Photosets {
+    page: number;
+    pages: number;
+    perpage: number;
+    total: number;
+    photoset: Photoset[];
+}
+
+export interface RootObject {
+    photosets: Photosets;
+    stat: string;
 }

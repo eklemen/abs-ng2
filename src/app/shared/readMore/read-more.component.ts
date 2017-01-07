@@ -36,8 +36,8 @@ export class ReadMoreComponent implements OnInit {
     @Input() maxHeight: number = 100;
 
     //set these to false to get the height of the expended container
-    public isCollapsed: boolean = false;
-    public isCollapsable: boolean = false;
+    public isCollapsed: boolean = true;
+    public isCollapsable: boolean = true;
 
     constructor(private elementRef: ElementRef) {
     }
@@ -46,8 +46,8 @@ export class ReadMoreComponent implements OnInit {
         let currentHeight = this.elementRef.nativeElement.getElementsByTagName('div')[0].offsetHeight;
         //collapsable only if the contents make container exceed the max height
         if (currentHeight > this.maxHeight) {
-            this.isCollapsed = true;
-            this.isCollapsable = true;
+            this.isCollapsed = false;
+            this.isCollapsable = false;
         }
     }
 

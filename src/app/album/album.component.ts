@@ -47,7 +47,6 @@ export class AlbumComponent extends LoadingPage implements OnInit {
             this.apiService.getSingleAlbum(id)
                 .subscribe(
                     (album: any) => {
-                        console.log('album', album);
                         this.albumTitle = album.title;
                         this.images = album.images;
                         this.ready();
