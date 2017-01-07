@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -25,7 +25,8 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     BrowserModule,
     HttpModule,
     FormsModule,
-    routing
+    routing,
+    JsonpModule
   ],
   declarations: [
     AppComponent,
