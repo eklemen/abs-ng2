@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Headersm Jsonp} from '@angular/http';
+import {Http, Jsonp} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Photoset, Album, Description, Title} from './types/albums';
 
@@ -32,35 +32,16 @@ export class ApiService {
                     );
                     this.albumList.push(albumDetails);
                     console.log(this.albumList)
-                    return this.http.get(`${this.fullUrl}&method=flickr.photos.getInfo&photo_id=${album.primary}&callback=JSONP_CALLBACK`,
-                        {headers: this.headers()})
-                        .map( image => {
-                            debugger;
-                            let coverImage = image.json().data.link;
-                            albumDetails.primary = coverImage;
-                            console.log('albumlist', this.albumList);
-                            console.log('albumDetail class', albumDetails);
+                    return this.http.get(`${this.fullUrl}&method=flickr.photos.getSizes&photo_id=${album.primary}&callback=JSONP_CALLBACK`)
+                        .map( sizes => {
+                            let listOfSizes = sizes.json().sizes.size;
+                            let medium = listOfSizes.find( size => size.label === 'Medium');
+                            albumDetails.primary = medium.source;
                             return this.albumList;
                         });
                 })
                 .catch(this.handleError);
         }
-
-    }
-
-    getAlbumCover(album:any): any {
-        return album.map(album => {
-            return this.http.get(`${this.fullUrl}&method=flickr.photos_getInfo=${album.primary}`,
-                {headers: this.headers()})
-                .flatMap( image => {
-                    debugger;
-                    let coverImage = image.json().data.link;
-                    album.primary = coverImage;
-                    console.log('albumlist', this.albumList);
-                    console.log('albumDetail class', album);
-                    return this.albumList;
-                });
-        })
 
     }
 
@@ -77,7 +58,7 @@ export class ApiService {
      */
     getSingleAlbum(albumId: any): any {
         if (!this.cachedAlbums[albumId]) {
-            return this.http.get(`${this.baseUrl}/album/${albumId}`, {headers: this.headers()})
+            return this.http.get(`${this.baseUrl}/album/${albumId}`)
                 .map(album => {
                     this.cachedAlbums[albumId] = album.json().data;
                     return album.json().data;
@@ -96,11 +77,11 @@ export class ApiService {
         return Observable.throw(errMsg);
     }
 
-    private headers() {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
-        return headers;
-    }
+    // private headers() {
+    //     let headers = new Headers();
+    //     headers.append('Content-Type', 'application/json');
+    //     return headers;
+    // }
 
     constructor(private http: Http, private _jsonp: Jsonp) {
     }

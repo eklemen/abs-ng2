@@ -13,22 +13,20 @@
                 <div *ngFor="let album of albums" class="image-detail col-sm-6 col-md-4">
                     <div class="w-90">
                         <div class="img-wrapper">
-                            <img (click)="onSelect(album)" class="" [src]="album.cover" alt="album.title">
+                            <img (click)="onSelect(album)" class="" [src]="album.primary" alt="album.title">
                         </div>
 
                         <div class="info-text">
                             <div>
                                 <h4>{{album.title}}</h4>
-                                <read-more [text]="album.description" [maxHeight]="48"></read-more>
-                                <!--<div class="gallery-description">-->
-                                    <!--<p>{{album.description}}</p>-->
-                                <!--</div>-->
+                                <p>{{album.description}}</p>
+                                <!-- <read-more [text]="album.description" [maxHeight]="48"></read-more> -->
                             </div>
                         </div>
                         <hr>
                         <div class="view-more">
 
-                            <div><span><em>{{album.images_count}} images</em></span></div>
+                            <div><span><em>{{album.photos}} images</em></span></div>
                             <div><button type="button" (click)="onSelect(album)" class="btn btn-default btn-sm ">View
                                 Album
                                 <i class="fa fa-chevron-right"></i>
