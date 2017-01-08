@@ -1,14 +1,15 @@
 <div [class.background]="isNotHome" class="h-100">
   <div class="overlay">
     <header>
-      <nav>
-        <a [routerLink]="['home']" [routerLinkActive]="['is-active']"><button class="btn btn-default">Home</button></a>
-        <a [routerLink]="['about']" [routerLinkActive]="['is-active']"><button class="btn btn-default">About</button></a>
-        <a [routerLink]="['gallery']" [routerLinkActive]="['is-active']"><button class="btn btn-default">Gallery</button></a>
-      </nav>
+        <h3>Art by Sher</h3>
+        <nav>
+            <a [routerLink]="['home']" [routerLinkActive]="['is-active']"><button class="btn btn-default">Home</button></a>
+            <a [routerLink]="['about']" [routerLinkActive]="['is-active']"><button class="btn btn-default">About</button></a>
+            <a [routerLink]="['gallery']" [routerLinkActive]="['is-active']"><button class="btn btn-default">Gallery</button></a>
+         </nav>
     </header>
     <main class="h-100">
-          <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
     </main>
   </div>
 </div>
