@@ -51,17 +51,28 @@ export class ApiService {
      * Example of cachedAlbums:
      *  cachedAlbums =
      *  {
-     *      'lkja': {response},
-     *      'qwer': {response}
+     *      'albumId1': {response},
+     *      'albumId2': {response}
      *  }
-
      */
+
     getSingleAlbum(albumId: any): any {
         if (!this.cachedAlbums[albumId]) {
-            return this.http.get(`${this.baseUrl}/album/${albumId}`)
+            return this.http.get(`${this.fullUrl}&method=flickr.photosets.getPhotos&photoset_id=${albumId}&extras=original_format`)
                 .map(album => {
-                    this.cachedAlbums[albumId] = album.json().data;
-                    return album.json().data;
+
+                    let albumImages = album.json().photoset.photo
+                    let refinedAlbums = albumImages.map( album => {
+                        let source = `https://farm${album.farm}.staticflickr.com/${album.server}/${album.id}_${album.originalsecret}_o.${album.originalformat}`;
+                        return {
+                            title: album.title,
+                            link: source,
+                            description: null
+                        }
+                    })
+                    this.cachedAlbums[albumId] = refinedAlbums;
+                    debugger;
+                    return refinedAlbums;
                 })
                 .catch(this.handleError);
         }
