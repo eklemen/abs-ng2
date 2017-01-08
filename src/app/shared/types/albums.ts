@@ -1,11 +1,7 @@
-export interface Title {
-    _content: string;
-}
-
-export interface Description {
-    _content: string;
-}
-
+/*
+* SingleAlbum is an object with album title and a list of images
+* used to cache albums that have been viewed
+*/
 export class SingleAlbum {
     title: string;
     images: PhotoDetail[];
@@ -15,13 +11,23 @@ export class SingleAlbum {
         this.images = images;
     }
 }
-
 export interface PhotoDetail {
     link: string;
     description: any;
     title: string;
 }
+////
 
+/*
+* Photosets is the response from Flickr
+*/
+export interface Photosets {
+    page: number;
+    pages: number;
+    perpage: number;
+    total: number;
+    photoset: Photoset[];
+}
 export interface Photoset {
     id: string;
     primary: string;
@@ -41,6 +47,18 @@ export interface Photoset {
     date_update: string;
 
 }
+export interface Title {
+    _content: string;
+}
+export interface Description {
+    _content: string;
+}
+////
+
+
+/*
+* AlbumDetail is detail/metadata about an album
+*/
 export class AlbumDetail {
     id: string;
     description: any;
@@ -60,18 +78,4 @@ export class AlbumDetail {
 
     }
 }
-
-
-
-export interface Photosets {
-    page: number;
-    pages: number;
-    perpage: number;
-    total: number;
-    photoset: Photoset[];
-}
-
-export interface RootObject {
-    photosets: Photosets;
-    stat: string;
-}
+////

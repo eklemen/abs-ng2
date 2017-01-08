@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Http, Jsonp} from '@angular/http';
+import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {Photoset, AlbumDetail, Description, Title, SingleAlbum} from './types/albums';
 
@@ -12,7 +12,7 @@ export class ApiService {
     albumList: AlbumDetail[] = [];
     cachedAlbums: any = {};
 
-    getAlbums(): Observable<any> {
+    getAlbums(): Observable<AlbumDetail[]> {
         // check if we have already saved the albums, if not make the call to imgur
         if (this.albumList.length) {
             return Observable.of(this.albumList);
@@ -56,7 +56,7 @@ export class ApiService {
      *  }
      */
 
-    getSingleAlbum(albumId: any): Observable<any> {
+    getSingleAlbum(albumId: string): Observable<any> {
         if (!this.cachedAlbums[albumId]) {
             return this.http.get(`${this.fullUrl}&method=flickr.photosets.getPhotos&photoset_id=${albumId}&extras=original_format`)
                 .map(album => {
@@ -90,13 +90,7 @@ export class ApiService {
         return Observable.throw(errMsg);
     }
 
-    // private headers() {
-    //     let headers = new Headers();
-    //     headers.append('Content-Type', 'application/json');
-    //     return headers;
-    // }
-
-    constructor(private http: Http, private _jsonp: Jsonp) {
+    constructor(private http: Http) {
     }
 
 }

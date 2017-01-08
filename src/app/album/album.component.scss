@@ -11,15 +11,14 @@
   margin: 0 auto;
   padding: 7rem 2rem 30px 2rem;
   .back-to-gallery{
-    color: #fff;
+    color: #3a3a3a;
     font-weight: bold;
     padding: 5px 7px;
-    background-color: rgba(255, 255, 255, 0.35);
-    border: solid 2px #fff;
+    background-color: #fff;
+    // border: solid 2px #fff;
     transition: background-color .2s, border-bottom .4s ease;
     &:hover{
-      background-color: #fff;
-      color: #3a3a3a;
+      background-color: rgba(255,255,255, 0.8);
     }
   }
 }

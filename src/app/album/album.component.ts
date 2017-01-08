@@ -4,7 +4,7 @@ import {Location} from '@angular/common';
 
 import {ApiService} from '../shared/api.service';
 import {LoadingPage} from '../shared/loading/loading';
-import {SingleAlbum} from 
+import {SingleAlbum, PhotoDetail} from '../shared/types/albums';
 
 @Component({
     selector: 'abs-album',
@@ -12,9 +12,9 @@ import {SingleAlbum} from
     styleUrls: ['./album.component.scss']
 })
 export class AlbumComponent extends LoadingPage implements OnInit {
-    public album: any;
+    public album: SingleAlbum;
     public albumTitle: string;
-    public images: any[];
+    public images: PhotoDetail[];
     errorMessage: string;
     openModalWindow: boolean = false;
     imagePointer: number;
@@ -44,7 +44,7 @@ export class AlbumComponent extends LoadingPage implements OnInit {
 
     getAlbumImages() {
         this.route.params.forEach((params: Params) => {
-            let id: any = params['id'];
+            let id: string = params['id'];
             this.apiService.getSingleAlbum(id)
                 .subscribe(
                     (album: SingleAlbum) => {
