@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http, Jsonp} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import {Photoset, Album, Description, Title} from './types/albums';
+import {Photoset, AlbumDetail, Description, Title, SingleAlbum} from './types/albums';
 
 @Injectable()
 export class ApiService {
@@ -9,7 +9,7 @@ export class ApiService {
     private apiKey: string = '&api_key=4f5119269b775b734ed7d65c29881543';
     private userId: string = '&user_id=130620580@N04';
     private fullUrl: string = `${this.baseUrl}${this.apiKey}${this.userId}&nojsoncallback=1`;
-    albumList: Album[] = [];
+    albumList: AlbumDetail[] = [];
     cachedAlbums: any = {};
 
     getAlbums(): Observable<any> {
@@ -20,10 +20,10 @@ export class ApiService {
             return this.http.get(`${this.fullUrl}&method=flickr.photosets.getList`)
                 .map(res => {return res.json().photosets.photoset}) // Get the albums/photosets array
                 .flatMap(albums => albums)
-                .flatMap((album: Album) => {
+                .flatMap((album: AlbumDetail) => {
                     let description:any = album.description._content;
                     let title:any = album.title._content;
-                    let albumDetails = new Album(
+                    let albumDetails = new AlbumDetail(
                         album.id,
                         description,
                         title,
@@ -56,23 +56,25 @@ export class ApiService {
      *  }
      */
 
-    getSingleAlbum(albumId: any): any {
+    getSingleAlbum(albumId: any): Observable<any> {
         if (!this.cachedAlbums[albumId]) {
             return this.http.get(`${this.fullUrl}&method=flickr.photosets.getPhotos&photoset_id=${albumId}&extras=original_format`)
                 .map(album => {
 
-                    let albumImages = album.json().photoset.photo
-                    let refinedAlbums = albumImages.map( album => {
-                        let source = `https://farm${album.farm}.staticflickr.com/${album.server}/${album.id}_${album.originalsecret}_o.${album.originalformat}`;
+                    let data = album.json().photoset;
+                    let albumImages = data.photo
+                    let albumTitle = data.title
+                    let refinedImages = albumImages.map( image => {
+                        let source = `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.originalsecret}_o.${image.originalformat}`;
                         return {
-                            title: album.title,
+                            title: image.title,
                             link: source,
                             description: null
                         }
                     })
-                    this.cachedAlbums[albumId] = refinedAlbums;
-                    debugger;
-                    return refinedAlbums;
+                    let newAlbum = new SingleAlbum(albumTitle, refinedImages)
+                    this.cachedAlbums[albumId] = newAlbum;
+                    return this.cachedAlbums[albumId];
                 })
                 .catch(this.handleError);
         }

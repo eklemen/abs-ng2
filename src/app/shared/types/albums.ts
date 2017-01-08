@@ -6,6 +6,21 @@ export interface Description {
     _content: string;
 }
 
+export class SingleAlbum {
+    title: string;
+    images: PhotoDetail[];
+    constructor(title: string,
+                images: PhotoDetail[]) {
+        this.title = title;
+        this.images = images;
+    }
+}
+
+export interface PhotoDetail {
+    link: string;
+    description: any;
+    title: string;
+}
 
 export interface Photoset {
     id: string;
@@ -26,7 +41,7 @@ export interface Photoset {
     date_update: string;
 
 }
-export class Album {
+export class AlbumDetail {
     id: string;
     description: any;
     title: any;

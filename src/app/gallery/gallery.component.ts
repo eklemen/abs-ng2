@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../shared/api.service';
-import { Album } from '../shared/types/albums';
+import { AlbumDetail } from '../shared/types/albums';
 import {LoadingPage} from '../shared/loading/loading';
 // import { ProgressbarModule } from 'ng2-bootstrap/components/progressbar';
 
@@ -12,8 +12,8 @@ import {LoadingPage} from '../shared/loading/loading';
   styleUrls: ['./gallery.component.scss']
 })
 export class GalleryComponent extends LoadingPage implements OnInit {
-  public albums: Album[];
-  private selectedAlbum: Album;
+  public albums: AlbumDetail[];
+  private selectedAlbum: AlbumDetail;
   errorMessage: string;
 
   constructor(
@@ -33,7 +33,7 @@ export class GalleryComponent extends LoadingPage implements OnInit {
             error =>  this.errorMessage = <any>error);
   }
 
-  onSelect ( album: Album) {
+  onSelect ( album: AlbumDetail) {
     this.selectedAlbum = album;
     this.getSingleAlbum(this.selectedAlbum.id);
   }

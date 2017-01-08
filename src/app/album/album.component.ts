@@ -4,6 +4,7 @@ import {Location} from '@angular/common';
 
 import {ApiService} from '../shared/api.service';
 import {LoadingPage} from '../shared/loading/loading';
+import {SingleAlbum} from 
 
 @Component({
     selector: 'abs-album',
@@ -46,7 +47,7 @@ export class AlbumComponent extends LoadingPage implements OnInit {
             let id: any = params['id'];
             this.apiService.getSingleAlbum(id)
                 .subscribe(
-                    (album: any) => {
+                    (album: SingleAlbum) => {
                         this.albumTitle = album.title;
                         this.images = album.images;
                         this.ready();
