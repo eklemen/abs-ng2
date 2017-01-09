@@ -5,12 +5,13 @@
 }
 
 header {
-  background-color: transparent;
+  background-color: #fff;
   padding: 10px 16px;
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  box-shadow: 0 5px 15px 0 rgba(0,0,0,0.75);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -29,7 +30,7 @@ header {
 
   h3 {
     display: inline-block;
-    color: white;
+    color: rgba(0,0,0,0.85);
     margin: 0;
   }
 
@@ -60,7 +61,7 @@ header {
 
     .is-active {
       .btn {
-        border-bottom: solid 4px lighten(#0194a2, 15%);
+        border-bottom: solid 4px darken(#0194a2, 10%);
       }
     }
     @media (max-width: 600px) {

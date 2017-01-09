@@ -1,27 +1,26 @@
 <div [ngSwitch]="loading">
 
-    <!--if Loading-->
-    <div *ngSwitchCase="true">
-        <loading-indicator></loading-indicator>
-    </div>
+  <!--if Loading-->
+  <div *ngSwitchCase="true">
+    <loading-indicator></loading-indicator>
+  </div>
 
-    <!--if Data-->
-    <div *ngSwitchCase="false">
-            <div class="album-wrapper">
-                <a [routerLink]="['/gallery']" [routerLinkActive]="['is-active']">
-                    <button class="btn pull-left btn-default btn-sm back-to-gallery">
+  <!--if Data-->
+  <div *ngSwitchCase="false">
+    <div class="album-wrapper">
+      <a [routerLink]="['/gallery']" [routerLinkActive]="['is-active']">
+        <button class="btn pull-left btn-default btn-sm back-to-gallery">
                         <i class="fa fa-angle-left"></i>
                         Gallery
                     </button>
-                </a>
-                <br>
-                <div class="clearfix visible-xs-block"></div>
-                <h2>
+      </a>
+      <br>
+      <div class="clearfix visible-xs-block"></div>
+      <h2>
                     {{albumTitle}}
                 </h2>
-                <ImageModal [modalImages]="images" [imagePointer]="imagePointer"
-                            (cancelEvent)="cancelImageModel()"></ImageModal>
-            </div>
+      <ImageModal [modalImages]="images" [imagePointer]="imagePointer" (cancelEvent)="cancelImageModel()"></ImageModal>
     </div>
+  </div>
 
 </div>
