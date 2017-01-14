@@ -1,6 +1,6 @@
 .home {
     margin: 0;
-    height: 100vh;
+    height: 100%;
     color: white;
     background-image: url('/img/brushesBg.jpg');
     background-size: cover;
@@ -8,9 +8,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    &:before{
+        content:"";
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
     h1{
         font-size: 5em;
         color: black;
+    }
+    .jumbotron{
+        z-index: 1;
     }
     .banner{
         .btn{
@@ -23,9 +36,8 @@
             transition: all .3s ease;
             &:hover{
                 background-color: darken(#0194a2, 10%);
-                transform: scale(0.98);
             }
         }
     }
-    
+
 }

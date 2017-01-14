@@ -41,17 +41,19 @@ header {
     //   }
     // }
     .btn {
-      background-color: rgba(1, 148, 162, 0.7);
-      color: white;
+      background-color: #fff;
+      color: rgba(0,0,0,0.85);
       font-size: 1.3rem;
       font-weight: bold;
       margin-left: 0.7rem;
       //   border-radius: 0;
       border-bottom: solid 4px transparent;
+      border: solid 2px #0194a2;
       transition: background-color 0.2s, border-bottom 0.4s ease;
 
       &:hover {
         background-color: #0194a2;
+        color: #fff;
       }
 
       &:focus {
@@ -61,7 +63,8 @@ header {
 
     .is-active {
       .btn {
-        border-bottom: solid 4px darken(#0194a2, 10%);
+        background-color: #0194a2;
+        color: white;
       }
     }
     @media (max-width: 600px) {
