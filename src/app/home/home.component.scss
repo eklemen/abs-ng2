@@ -25,6 +25,15 @@
     .jumbotron{
         z-index: 1;
     }
+    @media(max-width: 500px){
+        .jumbotron{
+            background-color: transparent;
+            h1{
+                font-size: 3em;
+                color: #fff;
+            }
+        }
+    }
     .banner{
         .btn{
             background-color: #0194a2;
@@ -39,5 +48,4 @@
             }
         }
     }
-
 }
