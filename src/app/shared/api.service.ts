@@ -6,8 +6,8 @@ import {Photoset, AlbumDetail, Description, Title, SingleAlbum} from './types/al
 @Injectable()
 export class ApiService {
   private baseUrl: string = 'https://api.flickr.com/services/rest?format=json';
-  private apiKey: string = '&api_key=4f5119269b775b734ed7d65c29881543';
-  private userId: string = '&user_id=130620580@N04';
+  private apiKey: string = '&api_key=249d81247f3fabcf1f2c0af0e9911ce4';
+  private userId: string = '&user_id=151187918@N08';
   private fullUrl: string = `${this.baseUrl}${this.apiKey}${this.userId}&nojsoncallback=1`;
   albumList: AlbumDetail[] = [];
   cachedAlbums: any = {};
@@ -58,17 +58,17 @@ export class ApiService {
 
   getSingleAlbum(albumId: string): Observable<any> {
     if (!this.cachedAlbums[albumId]) {
-      return this.http.get(`${this.fullUrl}&method=flickr.photosets.getPhotos&photoset_id=${albumId}&extras=original_format`)
+      return this.http.get(`${this.fullUrl}&method=flickr.photosets.getPhotos&photoset_id=${albumId}&extras=original_format,url_m,url_o`)
         .map(album => {
 
           let data = album.json().photoset;
-          let albumImages = data.photo
-          let albumTitle = data.title
+          let albumImages = data.photo;
+          let albumTitle = data.title;
           let refinedImages = albumImages.map(image => {
-            let source = `https://farm${image.farm}.staticflickr.com/${image.server}/${image.id}_${image.originalsecret}_o.${image.originalformat}`;
             return {
               title: image.title,
-              link: source,
+              thumb: image.url_m,
+              link: image.url_o,
               description: null
             }
           })

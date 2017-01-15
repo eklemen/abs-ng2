@@ -3,7 +3,7 @@
     <div *ngFor="let i of modalImages; let index = index" class="image-detail col-sm-6 col-md-4">
         <div class="w-90">
             <div class="img-wrapper">
-                <img src="{{ i.link }}" (click)="openGallery(index)" [alt]="i.title">
+                <img src="{{ i.thumb }}" (click)="openGallery(index)" [alt]="i.title">
             </div>
 
             <div>
