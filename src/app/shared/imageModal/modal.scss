@@ -261,7 +261,15 @@ uiload > div {
     animation: uil-ring-anim 1s linear infinite;
 }
 
+.flex-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
 .image-detail{
+    flex: 1;
+    max-width: 500px;
+    min-width: 300px;
     min-height: 300px;
     overflow: hidden;
     margin-bottom: 2rem;

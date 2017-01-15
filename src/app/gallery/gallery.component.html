@@ -10,31 +10,34 @@
             <div class="gallery-wrapper">
                 <h2>Gallery</h2>
 
-                <div *ngFor="let album of albums" class="image-detail col-sm-6 col-md-4">
-                    <div class="w-90">
-                        <div class="img-wrapper">
-                            <img (click)="onSelect(album)" class="" [src]="album.primary" alt="album.title">
-                        </div>
+                <div class="flex-wrapper">
+                    <div *ngFor="let album of albums" class="image-detail">
+                        <div class="w-90">
+                            <div class="img-wrapper">
+                                <img (click)="onSelect(album)" class="" [src]="album.primary" alt="album.title">
+                            </div>
 
-                        <div class="info-text">
-                            <div>
-                                <h4>{{album.title}}</h4>
-                                <p>{{album.description}}</p>
-                                <!-- <read-more [text]="album.description" [maxHeight]="48"></read-more> -->
+                            <div class="info-text">
+                                <div>
+                                    <h4>{{album.title}}</h4>
+                                    <p>{{album.description}}</p>
+                                    <!-- <read-more [text]="album.description" [maxHeight]="48"></read-more> -->
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="view-more">
+
+                                <div><span><em>{{album.photos}} images</em></span></div>
+                                <div><button type="button" (click)="onSelect(album)" class="btn btn-default btn-sm ">View
+                                    Album
+                                    <i class="fa fa-chevron-right"></i>
+                                </button></div>
                             </div>
                         </div>
-                        <hr>
-                        <div class="view-more">
 
-                            <div><span><em>{{album.photos}} images</em></span></div>
-                            <div><button type="button" (click)="onSelect(album)" class="btn btn-default btn-sm ">View
-                                Album
-                                <i class="fa fa-chevron-right"></i>
-                            </button></div>
-                        </div>
                     </div>
-
                 </div>
+
         </div>
     </div>
 
