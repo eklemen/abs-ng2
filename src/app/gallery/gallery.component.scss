@@ -5,9 +5,31 @@ h2{
   letter-spacing: 7px;
 }
 .flex-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
+    // display: flex;
+    // flex-wrap: wrap;
+    // justify-content: space-around;
+    // @media(max-width: 678px){
+    //     display: block;
+    //     .image-detail{
+    //         margin: 0 auto 2rem auto;;
+    //     }
+    // }
+    @media (max-width: 678px){
+        .image-detail{
+            width: 100%;
+            margin: 0 auto 2rem auto;
+        }
+    }
+    @media (min-width: 679px) and (max-width: 978px){
+        .image-detail{
+            width: 50%;
+        }
+    }
+    @media (min-width: 979px){
+        .image-detail{
+            width: 33%;
+        }
+    }
 }
 .gallery-wrapper {
   overflow: hidden;
@@ -18,10 +40,8 @@ h2{
       margin: 2rem auto;
   }
   .image-detail {
-    flex: 1;
-    max-width: 500px;
+    display: inline-block;
     min-width: 300px;
-    min-height: 300px;
     overflow: hidden;
     margin-bottom: 2rem;
     padding: 1.2rem;

@@ -261,16 +261,10 @@ uiload > div {
     animation: uil-ring-anim 1s linear infinite;
 }
 
-.flex-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
+
 .image-detail{
-    flex: 1;
-    max-width: 500px;
+    display: inline-block;
     min-width: 300px;
-    min-height: 300px;
     overflow: hidden;
     margin-bottom: 2rem;
     padding-right: 5px;
@@ -304,4 +298,28 @@ uiload > div {
         margin: auto;
       }
     }
+  }
+
+  .flex-wrapper{
+    //   display: flex;
+    //   flex-wrap: wrap;
+    //   justify-content: flex-start;
+      @media (max-width: 678px){
+          .image-detail{
+              width: 90%;
+              
+              margin: 0 auto 2rem auto;
+          }
+      }
+      @media (min-width: 679px) and (max-width: 978px){
+          .image-detail{
+              width: 50%;
+          }
+      }
+      @media (min-width: 979px){
+          .image-detail{
+              width: 33%;
+          }
+      }
+
   }
