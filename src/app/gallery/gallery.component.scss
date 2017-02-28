@@ -1,64 +1,74 @@
-h2{
+h2 {
   color: #fff;
   font-size: 3rem;
-  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
   letter-spacing: 7px;
 }
-.flex-wrapper{
-    // display: flex;
-    // flex-wrap: wrap;
-    // justify-content: space-around;
-    // @media(max-width: 678px){
-    //     display: block;
-    //     .image-detail{
-    //         margin: 0 auto 2rem auto;;
-    //     }
-    // }
-    @media (max-width: 678px){
-        .image-detail{
-            width: 100%;
-            margin: 0 auto 2rem auto;
-        }
+
+.flex-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  // justify-content: space-around;
+  // @media(max-width: 678px){
+  //     display: block;
+  //     .image-detail{
+  //         margin: 0 auto 2rem auto;;
+  //     }
+  // }
+  @media (max-width: 678px) {
+    .image-detail {
+      width: 100%;
+      margin: 0 auto 2rem;
     }
-    @media (min-width: 679px) and (max-width: 978px){
-        .image-detail{
-            width: 50%;
-        }
+  }
+  @media (min-width: 679px) and (max-width: 978px) {
+    .image-detail {
+      width: 50%;
     }
-    @media (min-width: 979px){
-        .image-detail{
-            width: 33%;
-        }
+  }
+  @media (min-width: 979px) {
+    .image-detail {
+      width: 33%;
     }
+  }
 }
+
 .gallery-wrapper {
   overflow: hidden;
-  max-width: 1100px;
+  max-width: 1300px;
   margin: 0 auto;
-  padding: 7rem 2rem 30px 2rem;
-  h2{
-      margin: 2rem auto;
+  padding: 7rem 2rem 30px;
+
+  h2 {
+    margin: 2rem auto;
   }
+
   .image-detail {
-    display: inline-block;
+    display: flex;
     min-width: 300px;
     overflow: hidden;
     margin-bottom: 2rem;
     padding: 1.2rem;
+
     .w-90 {
+      flex-direction: column;
+      display: flex;
+      justify-content: space-between;
       width: 97%;
       margin: 0 auto;
       background-color: rgba(255, 255, 255, 0.87);
       border-radius: 3px;
       box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.8);
       padding: 0.6rem;
+
       .img-wrapper {
         margin-bottom: 1rem;
         display: block;
         position: relative;
         height: 0;
-        padding: 78% 0 0 0;
+        padding: 78% 0 0;
         overflow: hidden;
+
         img {
           cursor: pointer;
           position: absolute;
@@ -73,18 +83,22 @@ h2{
           transition: all 0.2s ease-out;
           box-shadow: 6px 6px 10px #aaa;
         }
-        .gallery-description{
+
+        .gallery-description {
           max-height: 58px;
           overflow: auto;
-          p{
+
+          p {
             margin-bottom: 0;
           }
         }
       }
-      .info-text{
+
+      .info-text {
         padding: 0.5rem 0.7rem;
       }
     }
+
     .view-more {
       display: flex;
       justify-content: space-around;
@@ -95,7 +109,8 @@ h2{
         transition: all 0.15s ease-out;
         color: #0194a2;
         border: solid 1px #0194a2;
-        &:hover{
+
+        &:hover {
           background-color: #0194a2;
           border-color: transparent;
           color: #fff;
