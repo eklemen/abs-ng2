@@ -68,7 +68,7 @@ export class ApiService {
             return {
               title: image.title,
               thumb: image.url_m,
-              link: image.url_o,
+              link: image.url_m,
               description: null
             }
           })
