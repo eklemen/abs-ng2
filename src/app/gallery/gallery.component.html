@@ -13,9 +13,14 @@
                 <div class="flex-wrapper">
                     <div
                         *ngFor="let album of albums"
-                         class="image-detail"
-                         [ngStyle]="{'background-image': 'url(' + album.primary+ ')'}"
-                         (click)="onSelect(album)" >
+                         class="image-detail" >
+                         <div class="bg" [ngStyle]="{'background-image': 'url(' + album.primary+ ')'}"
+                         (click)="onSelect(album)"></div>
+                         <div class="caption">
+                            <h6>{{album.title}}</h6>
+                            <button class="main-btn">View Album <i class="fa fa-angle-right"></i></button>
+                         </div>
+
                         <!-- <div class="w-90">
                             <div class="img-wrapper">
                                 <img (click)="onSelect(album)" class="" [src]="album.primary" alt="album.title">
