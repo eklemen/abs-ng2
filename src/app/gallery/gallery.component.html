@@ -18,7 +18,11 @@
                          (click)="onSelect(album)"></div>
                          <div class="caption">
                             <h6>{{album.title}}</h6>
-                            <button class="main-btn">View Album <i class="fa fa-angle-right"></i></button>
+                            <button (click)="onSelect(album)"
+                                    class="main-btn"> 
+                                    View Album
+                                    <i class="fa fa-angle-right"></i>
+                            </button>
                          </div>
 
                         <!-- <div class="w-90">

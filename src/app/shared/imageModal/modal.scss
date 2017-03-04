@@ -64,7 +64,7 @@ img.ng-thumb {
 
 .ng-gallery-content > a.nav-left, .ng-gallery-content > a.nav-right {
   color: #fff;
-  text-decoration: none;
+  text-decoration: none; 
   font-size: 60px;
   cursor: pointer;
   outline: none;
@@ -74,6 +74,7 @@ img.ng-thumb {
   position: fixed;
   left: 30px;
   top: 50%;
+  padding-right: 15px;
   transform: translateY(-50%);
 }
 
@@ -81,6 +82,7 @@ img.ng-thumb {
   position: fixed;
   right: 30px;
   top: 50%;
+  padding-left: 15px;
   transform: translateY(-50%);
 }
 
@@ -307,7 +309,7 @@ uiload > div {
       @media (max-width: 678px){
           .image-detail{
               width: 90%;
-              
+
               margin: 0 auto 2rem auto;
           }
       }
