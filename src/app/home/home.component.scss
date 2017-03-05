@@ -1,51 +1,80 @@
 .home {
-    margin: 0;
-    height: 100%;
-    color: white;
-    background-image: url('/img/brushesBg.jpg');
-    background-size: cover;
-    background-position-y: 80%;
+  margin: 0;
+  height: 100%;
+  color: white;
+  background-image: url('/img/brushesBg.jpg');
+  background-size: cover;
+  background-position-y: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .overlay {
+    display: flex;
+  }
+
+  .flex-container {
     display: flex;
     align-items: center;
     justify-content: center;
-    &:before{
-        content:"";
-        display: block;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
+    max-width: 1200px;
+    margin: auto;
+    @media(max-width: 780px) {
+      flex-direction: column-reverse;
+
+      h1 {
+        font-size: 4rem;
+      }
     }
-    h1{
-        font-size: 5em;
-        color: black;
+    @media(max-width: 550px) {
+      padding-top: 8rem;
+
+      h1 {
+        font-size: 3rem;
+      }
     }
-    .jumbotron{
-        z-index: 1;
-    }
-    @media(max-width: 500px){
-        .jumbotron{
-            background-color: transparent;
-            h1{
-                font-size: 3em;
-                color: #fff;
-            }
+
+    .item {
+      flex: 1;
+      padding: 1rem;
+
+      &:first-child {
+        flex: 1.5;
+      }
+
+      .text {
+        max-width: 600px;
+      }
+
+      .main-btn {
+        border-radius: 18px;
+        background-color: #0194a2;
+        color: #fff;
+        border: none;
+        padding: 4px 18px;
+
+        .fa {
+          transition: all 0.2s ease;
         }
-    }
-    .banner{
-        .btn{
-            background-color: #0194a2;
-            margin-top: 2rem;
-            width: 200px;
-            padding: 10px 50px;
-            font-size: 2em;
-            border: none;
-            transition: all .3s ease;
-            &:hover{
-                background-color: darken(#0194a2, 10%);
-            }
+
+        &:hover {
+          cursor: pointer;
+          background-color: darken(#0194a2, 10%);
+
+          .fa {
+            transform: translateX(3px);
+          }
         }
+
+        &:focus {
+          outline: none;
+        }
+      }
     }
+  }
+
+  h1 {
+    font-size: 5em;
+    color: #fff;
+  }
 }
