@@ -1,55 +1,51 @@
 <div [ngSwitch]="loading">
 
-    <!--if Loading-->
-    <div *ngSwitchCase="true">
-        <loading-indicator></loading-indicator>
-    </div>
+  <!--if Loading-->
+  <div *ngSwitchCase="true">
+    <loading-indicator></loading-indicator>
+  </div>
 
-    <!--if Data-->
-    <div *ngSwitchCase="false">
-            <div class="gallery-wrapper">
-                <h2>Gallery</h2>
+  <!--if Data-->
+  <div *ngSwitchCase="false">
+    <div class="gallery-wrapper">
+      <h2>Gallery</h2>
 
-                <div class="flex-wrapper">
-                    <div
-                        *ngFor="let album of albums"
-                         class="image-detail" >
-                         <div class="bg" [ngStyle]="{'background-image': 'url(' + album.primary+ ')'}"
-                         (click)="onSelect(album)"></div>
-                         <div class="caption">
-                            <h6>{{album.title}}</h6>
-                            <button (click)="onSelect(album)"
-                                    class="main-btn"> 
-                                    View Album
-                                    <i class="fa fa-angle-right"></i>
-                            </button>
-                         </div>
+      <div class="flex-wrapper">
+        <div *ngFor="let album of albums" class="image-detail">
+          <div class="bg" [ngStyle]="{'background-image': 'url(' + album.primary+ ')'}" (click)="onSelect(album)"></div>
+          <div class="caption">
+            <h6>{{album.title}}</h6>
+            <button (click)="onSelect(album)" class="main-btn">
+                            View Album
+                            <i class="fa fa-angle-right"></i>
+                        </button>
+          </div>
 
-                        <!-- <div class="w-90">
-                            <div class="img-wrapper">
-                                <img (click)="onSelect(album)" class="" [src]="album.primary" alt="album.title">
-                            </div>
-
-                            <div class="info-text">
-                                <div>
-                                    <h4>{{album.title}}</h4>
-                                    <p>{{album.description}}</p>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="view-more">
-
-                                <div><span><em>{{album.photos}} images</em></span></div>
-                                <div><button type="button" (click)="onSelect(album)" class="btn btn-default btn-sm ">View
-                                    Album
-                                    <i class="fa fa-chevron-right"></i>
-                                </button></div>
-                            </div>
-                        </div> -->
-                    </div>
+          <!-- <div class="w-90">
+                    <div class="img-wrapper">
+                    <img (click)="onSelect(album)" class="" [src]="album.primary" alt="album.title">
                 </div>
 
+                <div class="info-text">
+                <div>
+                <h4>{{album.title}}</h4>
+                <p>{{album.description}}</p>
+            </div>
         </div>
+        <hr>
+        <div class="view-more">
+
+        <div><span><em>{{album.photos}} images</em></span></div>
+        <div><button type="button" (click)="onSelect(album)" class="btn btn-default btn-sm ">View
+        Album
+        <i class="fa fa-chevron-right"></i>
+    </button></div>
+</div>
+</div> -->
+        </div>
+      </div>
+
     </div>
+  </div>
 
 </div>
