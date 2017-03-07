@@ -3,6 +3,9 @@
   <div class="flex-wrapper">
     <div *ngFor="let i of modalImages; let index = index" class="image-detail">
       <div class="bg" [ngStyle]="{'background-image': 'url(' + i.thumb + ')'}" (click)="openGallery(index)"></div>
+      <div class="caption">
+        <h6>{{i.title}}</h6>
+      </div>
     </div>
   </div>
 

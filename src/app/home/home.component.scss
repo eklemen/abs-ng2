@@ -47,11 +47,14 @@
       }
 
       .main-btn {
-        border-radius: 18px;
-        background-color: #0194a2;
+        border-radius: 40px;
+        background-color: lighten(#0194a2, 10%);
         color: #fff;
+        height: 40px;
+        // width: 100%;
         border: none;
         padding: 4px 18px;
+        margin-top: 18px;
 
         .fa {
           transition: all 0.2s ease;

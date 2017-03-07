@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Http} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import {Photoset, AlbumDetail, Description, Title, SingleAlbum} from './types/albums';
+import {AlbumDetail, SingleAlbum} from './types/albums';
 
 @Injectable()
 export class ApiService {
@@ -13,12 +13,12 @@ export class ApiService {
   cachedAlbums: any = {};
 
   getAlbums(): Observable<AlbumDetail[]> {
-    // check if we have already saved the albums, if not make the call to imgur
+    // check if we have already saved the albums, if not make the call to flickr
     if (this.albumList.length) {
       return Observable.of(this.albumList);
     } else {
       return this.http.get(`${this.fullUrl}&method=flickr.photosets.getList`)
-        .map(res => { return res.json().photosets.photoset }) // Get the albums/photosets array
+        .map(res => res.json().photosets.photoset) // Get the albums/photosets array
         .flatMap(albums => albums)
         .flatMap((album: AlbumDetail) => {
           let description: any = album.description._content;
@@ -31,7 +31,6 @@ export class ApiService {
             album.primary
           );
           this.albumList.push(albumDetails);
-          console.log(this.albumList)
           return this.http.get(`${this.fullUrl}&method=flickr.photos.getSizes&photo_id=${album.primary}&callback=JSONP_CALLBACK`)
             .map(sizes => {
               let listOfSizes = sizes.json().sizes.size;
@@ -47,7 +46,7 @@ export class ApiService {
 
   /*
    * getSingleAlbum will push to cachedAlbums on first view caching the response
-   * Check this object before making get request to imgur
+   * Check this object before making get request to flickr
    * Example of cachedAlbums:
    *  cachedAlbums =
    *  {
@@ -70,9 +69,9 @@ export class ApiService {
               thumb: image.url_m,
               link: image.url_m,
               description: null
-            }
-          })
-          let newAlbum = new SingleAlbum(albumTitle, refinedImages)
+            };
+          });
+          let newAlbum = new SingleAlbum(albumTitle, refinedImages);
           this.cachedAlbums[albumId] = newAlbum;
           return this.cachedAlbums[albumId];
         })

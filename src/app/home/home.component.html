@@ -12,7 +12,12 @@
       <div class="item">
         <img src="/img/profile.png" class="img-thumbnail img-responsive hidden-xs" alt="profile picture">
         <br/>
-        <button class="main-btn">View the gallery <i class="fa fa-angle-right"></i></button>
+        <a [routerLink]="['/gallery']">
+          <button class="main-btn">
+                View the gallery
+                <i class="fa fa-angle-right"></i>
+            </button>
+        </a>
       </div>
 
       <!-- <div class="banner">

@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,7 +16,6 @@ import { AlbumComponent } from './album/album.component';
 import { ApiService } from './shared';
 import { LoadingIndicator } from './shared/loading/loading';
 import { ImageModal } from './shared/imageModal/image-modal-popup';
-import { ReadMoreComponent } from './shared/readMore/read-more.component';
 import { routing } from './app.routing';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -35,17 +34,16 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
     AboutComponent,
     AlbumComponent,
     LoadingIndicator,
-    ImageModal,
-    ReadMoreComponent
+    ImageModal
   ],
   providers: [
     ApiService,
-    {provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(public appRef: ApplicationRef) {}
+  constructor(public appRef: ApplicationRef) { }
   hmrOnInit(store) {
     console.log('HMR store', store);
   }

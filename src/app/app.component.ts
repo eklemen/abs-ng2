@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import '../style/app.scss';
@@ -8,22 +8,22 @@ import '../style/app.scss';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   public isNotHome = false;
 
-  constructor(private router:Router) {
+  constructor(private router: Router) {
   }
 
-  checkRoute(){
-    this.router.events.subscribe( event => {
+  checkRoute() {
+    this.router.events.subscribe(event => {
       const regex = /^\/$/ig;
-      if (event.url.match(regex) === null){
-        return this.isNotHome = true
+      if (event.url.match(regex) === null) {
+        return this.isNotHome = true;
       }
       this.isNotHome = false;
     });
   }
-  ngOnInit(){
+  ngOnInit() {
     this.checkRoute();
   }
 }
