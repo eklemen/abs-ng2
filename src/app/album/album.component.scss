@@ -4,6 +4,8 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 13rem 2rem 30px;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   .back-to-gallery {
     color: #fff;

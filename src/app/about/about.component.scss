@@ -1,6 +1,8 @@
 .about-wrapper {
   padding-top: 7rem;
   margin-top: 7rem;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   .info {
     padding: 3.5rem 2rem 1.5rem;
     position: relative;

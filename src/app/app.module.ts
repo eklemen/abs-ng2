@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import {HashLocationStrategy, LocationStrategy} from '@angular/common';
 import { FormsModule } from '@angular/forms';
+// import "../polyfills.ts";
+// import "../vendor.ts";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 // Using with ng2-bootstrap
